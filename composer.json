@@ -1,0 +1,32 @@
+{
+    "name": "siqwell/eagle",
+    "description": "Laravel wrapper for Eagleplatform API",
+    "keywords": ["laravel", "eagleplatform", "api"],
+    "license": "proprietary",
+    "type": "library",
+    "authors": [
+        {
+            "name": "fenix007",
+            "email": "nazarovAlexei@ya.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "^6.0",
+        "kevinrob/guzzle-cache-middleware": "^1.5",
+        "symfony/dom-crawler": "^3.2",
+        "illuminate/support": "^5.2",
+        "doctrine/cache": "^1.6",
+        "rtheunissen/guzzle-log-middleware": "^0.4.0",
+        "ext-curl": "*",
+        "symfony/event-dispatcher": ">=2.4,<4",
+        "symfony/options-resolver": ">=2.6,<4",
+        "psr/log": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Siqwell\\Eagle\\": "src/"
+        }
+    }
+}
