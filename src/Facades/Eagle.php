@@ -1,4 +1,5 @@
 <?php
+
 namespace Siqwell\Eagle\Facades;
 
 use Illuminate\Support\Facades\Facade;

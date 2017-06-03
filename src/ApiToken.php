@@ -1,11 +1,12 @@
 <?php
+
 namespace Siqwell\Eagle;
 
 
 class ApiToken
 {
     private $apiToken = null;
-
+    
     /**
      * Token bag
      *
@@ -15,9 +16,9 @@ class ApiToken
     {
         $this->apiToken = $api_token;
     }
-
+    
     /**
-     * @param  string           $apiToken
+     * @param  string $apiToken
      * @throws \RuntimeException
      * @return $this
      */
@@ -29,7 +30,7 @@ class ApiToken
         $this->apiToken = $apiToken;
         return $this;
     }
-
+    
     /**
      * @return string
      */
@@ -37,9 +38,9 @@ class ApiToken
     {
         return $this->apiToken;
     }
-
+    
     public function __toString()
     {
-        return (string) $this->apiToken;
+        return (string)$this->apiToken;
     }
 }

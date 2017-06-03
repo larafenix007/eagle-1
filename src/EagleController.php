@@ -1,4 +1,5 @@
 <?php
+
 namespace Siqwell\Eagle;
 
 use App\Http\Controllers\Controller;

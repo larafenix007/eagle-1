@@ -1,161 +1,169 @@
 <?php
+
 namespace Siqwell\Eagle\Api;
 
-use Siqwell\Eagle\Client;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Psr7\Uri;
+use Illuminate\Support\Str;
+use Siqwell\Eagle\HttpClient\HttpClient;
+use Siqwell\Eagle\HttpClient\Request;
+use Siqwell\Eagle\Mappers\Mapper;
 
 /**
- * Class AbstractApi
- * @package Eagle\Api
+ * Class ContractApi
+ * @package Siqwell\Eagle\Api
  */
 abstract class AbstractApi
 {
     /**
-     * The client
-     *
-     * @var Client
+     * @var string
+     */
+    protected $pattern;
+    /**
+     * @var HttpClient
      */
     protected $client;
-
     /**
-     * Constructor
-     *
-     * @param Client $client
+     * @var string|\Closure|null
      */
-    public function __construct(Client $client)
+    protected $mapper;
+    
+    /**
+     * Api constructor.
+     *
+     * @param HttpClient $client
+     */
+    public function __construct(HttpClient $client)
     {
         $this->client = $client;
     }
-
+    
     /**
-     * Send a GET request
+     * @param string|\Closure $mapper
      *
-     * @param  string $path
-     * @param  array  $parameters
-     * @param  array  $headers
-     * @return mixed
+     * @return $this
      */
-    public function get($path, array $parameters = [], $headers = [])
+    public function setMapper($mapper)
     {
-        $response = $this->getClient()->getHttpClient()->get($path, $parameters, $headers);
-
-        return $this->decodeResponse($response);
-    }
-
-    /**
-     * Send a HEAD request
-     *
-     * @param $path
-     * @param  array $parameters
-     * @param  array $headers
-     * @return mixed
-     */
-    public function head($path, array $parameters = [], $headers = [])
-    {
-        $response = $this->getClient()->getHttpClient()->head($path, $parameters, $headers);
-
-        return $this->decodeResponse($response);
-    }
-
-    /**
-     * Send a POST request
-     *
-     * @param  string $path
-     * @param  null   $postBody
-     * @param  array  $parameters
-     * @param  array  $headers
-     * @return mixed
-     */
-    public function post($path, $postBody = null, array $parameters = [], $headers = [])
-    {
-        $response = $this->getClient()->getHttpClient()->post($path, $postBody, $parameters, $headers);
-
-        return $this->decodeResponse($response);
-    }
-
-    /**
-     * Send a PUT request
-     *
-     * @param $path
-     * @param  null  $body
-     * @param  array $parameters
-     * @param  array $headers
-     * @return mixed
-     */
-    public function put($path, $body = null, array $parameters = [], $headers = [])
-    {
-        $response = $this->getClient()->getHttpClient()->put($path, $body, $parameters, $headers);
-
-        return $this->decodeResponse($response);
-    }
-
-    /**
-     * Send a DELETE request
-     *
-     * @param  string $path
-     * @param  null   $body
-     * @param  array  $parameters
-     * @param  array  $headers
-     * @return mixed
-     */
-    public function delete($path, $body = null, array $parameters = [], $headers = [])
-    {
-        $response = $this->getClient()->getHttpClient()->delete($path, $body, $parameters, $headers);
-
-        return $this->decodeResponse($response);
-    }
-
-    /**
-     * Send a PATCH request
-     *
-     * @param $path
-     * @param  null  $body
-     * @param  array $parameters
-     * @param  array $headers
-     * @return mixed
-     */
-    public function patch($path, $body = null, array $parameters = [], $headers = [])
-    {
-        $response = $this->getClient()->getHttpClient()->patch($path, $body, $parameters, $headers);
-
-        return $this->decodeResponse($response);
-    }
-
-    /**
-     * Send a POST request but json_encode the post body in the request
-     *
-     * @param  string $path
-     * @param  mixed  $postBody
-     * @param  array  $parameters
-     * @param  array  $headers
-     * @return mixed
-     */
-    public function postJson($path, $postBody = null, array $parameters = [], $headers = [])
-    {
-        if (is_array($postBody)) {
-            $postBody = json_encode($postBody);
+        if (is_string($mapper) && class_exists($mapper)) {
+            $this->mapper = $mapper;
+        } else {
+            $this->mapper = null;
+            
+            if ($mapper instanceof \Closure) {
+                $this->mapper = $mapper;
+            }
         }
-
-        return $this->post($path, $postBody, $parameters, $headers);
+        
+        return $this;
     }
-
+    
     /**
-     * Retrieve the client
+     * @param      $result
+     * @param null $url
      *
-     * @return Client
+     * @return mixed
      */
-    public function getClient()
+    public function callMap($result, $url = null)
+    {
+        if ($this->mapper instanceof \Closure) {
+            return call_user_func_array($this->mapper, [$result]);
+        }
+        
+        if (is_string($this->mapper) &&
+            class_exists($this->mapper) &&
+            is_subclass_of($this->mapper, Mapper::class, true)
+        ) {
+            return app($this->mapper, [
+                'content' => $result,
+                'url' => $url,
+                'base_href' => $this->client->getConfig('base_uri')
+            ])->get();
+        }
+        
+        return null;
+    }
+    
+    /**
+     * @return bool
+     */
+    public function isMapped(): bool
+    {
+        return $this->mapper !== null;
+    }
+    
+    /**
+     * @param Request $request
+     * @throws \Exception
+     *
+     * @return mixed
+     */
+    protected function get(Request $request)
+    {
+        $url = $this->getPattern($request->getParameters(), $request->getPath());
+        
+        try {
+            $method = $request->getMethod();
+            /** @var \Psr\Http\Message\ResponseInterface $response */
+            $response = $this->client->$method($url);
+        } catch (ConnectException $e) {
+            return false;
+        }
+        
+        if ($response->getStatusCode() !== 200) {
+            return false;
+        }
+        
+        if (!$content = $response->getBody()->getContents()) {
+            return false;
+        }
+        
+        if (!$content = $this->checkContent($content)) {
+            return false;
+        }
+        
+        return $this->isMapped() ? $this->callMap($content, $url) : $content;
+    }
+    
+    /**
+     * @param string $content
+     *
+     * @return string|bool
+     */
+    protected function checkContent(string $content)
+    {
+        if (Str::contains($content, 'captchaSound')) {
+            return false;
+        }
+        
+        return $content;
+    }
+    
+    /**
+     * @param array $variables
+     * @param null  $pattern
+     *
+     * @return mixed
+     */
+    protected function getPattern(array $variables = [], $pattern = null)
+    {
+        $pattern = $pattern ?: $this->pattern;
+        if (count($variables)) {
+            foreach ($variables as $key => $value) {
+                $pattern = Str::replaceFirst("{$key}", $value, $pattern);
+            }
+        }
+        /* @var Uri $uri */
+        $uri = $this->client->getConfig('base_uri');
+        
+        return (string)$uri->withPath($pattern);
+    }
+    
+    /**
+     * @return HttpClient
+     */
+    protected function getClient()
     {
         return $this->client;
-    }
-
-    /**
-     * Decode the response
-     *
-     * @param $response
-     * @return mixed
-     */
-    private function decodeResponse($response)
-    {
-        return is_string($response) ? json_decode($response, true) : $response;
     }
 }
