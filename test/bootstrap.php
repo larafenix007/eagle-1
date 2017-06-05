@@ -15,4 +15,5 @@ if ((!$loader = includeIfExists(__DIR__.'/../vendor/autoload.php')) && (!$loader
 
 $loader->add('Siqwell\Eagle\Tests', __DIR__);
 
+
 return $loader;

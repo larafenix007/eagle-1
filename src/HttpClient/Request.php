@@ -5,12 +5,12 @@ namespace Siqwell\Eagle\HttpClient;
 class Request
 {
     const METHODS = [
-        'get',
-        'head',
-        'put',
-        'post',
-        'patch',
-        'delete'
+        'GET',
+        'HEAD',
+        'PUT',
+        'POST',
+        'PATCH',
+        'DELETE'
     ];
     
     /**

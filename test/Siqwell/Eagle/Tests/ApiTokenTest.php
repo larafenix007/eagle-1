@@ -18,7 +18,7 @@ class ApiTokenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Siqwell\Eagle\Exception\RuntimeException
+     * @expectedException \RuntimeException
      * @test
      */
     public function testThrowsErrorOnEmptyApiToken()
