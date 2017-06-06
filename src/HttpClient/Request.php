@@ -35,7 +35,7 @@ class Request
      * @param array  $parameters
      * @throws \InvalidArgumentException
      */
-    public function __construct($path = '/', $method = 'GET', array $parameters = [])
+    public function __construct($method = 'GET', $path = '/', array $parameters = [])
     {
         if (!in_array($method, self::METHODS)) {
             throw new \InvalidArgumentException("Unsupproted method '$method'");
@@ -51,10 +51,11 @@ class Request
     /**
      * Replace $params in url like {id} to it's value
      */
-    public function replaceVariables() : void
+    public function replaceVariables()
     {
         foreach ($this->parameters as $var => $val) {
-            $this->setPath(str_replace("{$var}", $val, $this->getPath()));
+            $path = str_replace('{' . $var . '}', $val, $this->getPath());
+            $this->setPath($path);
         }
     }
     
@@ -69,7 +70,7 @@ class Request
     /**
      * @param string $path
      */
-    public function setPath(string $path) : void
+    public function setPath(string $path)
     {
         $this->path = $path;
     }
@@ -85,7 +86,7 @@ class Request
     /**
      * @param string $method
      */
-    public function setMethod(string $method) : void
+    public function setMethod(string $method)
     {
         $this->method = $method;
     }
@@ -101,7 +102,7 @@ class Request
     /**
      * @param array $parameters
      */
-    public function setParameters(array $parameters) : void
+    public function setParameters(array $parameters)
     {
         $this->parameters = $parameters;
     }

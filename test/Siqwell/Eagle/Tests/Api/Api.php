@@ -17,8 +17,43 @@ class Api extends AbstractApi
         return parent::checkContent($content);
     }
 
+    /**
+     * @param Request $request
+     * @throws \Exception
+     *
+     * @return mixed
+     */
     public function get(Request $request)
     {
-        return parent::get($request);
+        try {
+            /** @var \Psr\Http\Message\ResponseInterface $response */
+            $content = $this->loadByFile($request->getPath());
+        } catch (\InvalidArgumentException $e) {
+            return false;
+        }
+
+        return $this->isMapped() ? $this->callMap($content, $request->getPath()) : $content;
+    }
+
+    /**
+     * Load an json file from the Resources directory
+     *
+     * @param $file
+     * @throws \HttpInvalidParamException
+     * @return mixed
+     */
+    public function loadByFile($file)
+    {
+        if (!file_exists(__DIR__ . '/Resources/' . $file)) {
+            throw new \InvalidArgumentException('File not found in resource');
+        }
+
+        return file_get_contents(
+                    sprintf(
+                        '%s/%s',
+                        __DIR__ . '/Resources/',
+                        $file
+                    )
+                );
     }
 }

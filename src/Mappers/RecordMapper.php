@@ -2,21 +2,19 @@
 
 namespace Siqwell\Eagle\Mappers;
 
+use Siqwell\Eagle\Common\ObjectHydrator;
+use Siqwell\Eagle\Models\Record;
+
 /**
  * Class Mapper
  * @package Siqwell\Eagle\Mappers
  */
 class RecordMapper extends Mapper
 {
-    /**
-     * @var \Illuminate\Support\Collection
-     */
-    protected $result;
-    
     public function get()
     {
-        $this->result = collect();
-        
-        
+        $objectHydrator = new ObjectHydrator();
+
+        return $objectHydrator->hydrate(new Record(), $this->response);
     }
 }

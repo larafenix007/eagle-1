@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Siqwell\Eagle\HttpClient\HttpClient;
 use Siqwell\Eagle\HttpClient\Request;
 use Siqwell\Eagle\Mappers\Mapper;
+use Siqwell\Eagle\Methods;
 
 /**
  * Class ContractApi
@@ -27,15 +28,19 @@ abstract class AbstractApi
      * @var string|\Closure|null
      */
     protected $mapper;
+
+    protected static $methods;
     
     /**
      * Api constructor.
      *
      * @param HttpClient $client
+     * @param Methods $methods
      */
-    public function __construct(HttpClient $client)
+    public function __construct(HttpClient $client, Methods $methods)
     {
         $this->client = $client;
+        self::$methods = $methods;
     }
     
     /**
@@ -74,11 +79,10 @@ abstract class AbstractApi
             class_exists($this->mapper) &&
             is_subclass_of($this->mapper, Mapper::class, true)
         ) {
-            return app($this->mapper, [
-                'content' => $result,
-                'url' => $url,
-                'base_href' => $this->client->getConfig('base_uri')
-            ])->get();
+            /** @var Mapper $mapper */
+            $mapper = new $this->mapper($result, $url, $this->client->getConfig('base_uri'));
+
+            return $mapper->get();
         }
         
         return null;

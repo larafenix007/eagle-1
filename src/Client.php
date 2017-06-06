@@ -39,6 +39,6 @@ class Client
      */
     public function Filter() : FilterApi
     {
-        return new FilterApi($this->client);
+        return new FilterApi($this->client, new Methods());
     }
 }
