@@ -4,7 +4,6 @@ namespace Siqwell\Eagle\Api;
 
 use Siqwell\Eagle\HttpClient\Request;
 use Siqwell\Eagle\Mappers\RecordMapper;
-use Siqwell\Eagle\Methods;
 
 class RecordApi extends AbstractApi
 {
@@ -16,8 +15,8 @@ class RecordApi extends AbstractApi
         
         $result = $this->setMapper(RecordMapper::class)->get(
             new Request(
-                Methods::RECORD_GET_INFO['method'],
-                Methods::RECORD_GET_INFO['path'],
+                self::$methods::RECORD_GET_INFO['method'],
+                self::$methods::RECORD_GET_INFO['path'],
                 $parameters
             )
         );

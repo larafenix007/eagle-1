@@ -3,11 +3,7 @@
 namespace Siqwell\Eagle\Tests\Api;
 
 use Siqwell\Eagle\Api\RecordApi;
-use Siqwell\Eagle\ApiToken;
-use Siqwell\Eagle\HttpClient\Request;
-use Siqwell\Eagle\Mappers\RecordMapper;
-use Siqwell\Eagle\Tests\HttpClient\HttpClient;
-use Siqwell\Eagle\Tests\Methods;
+use Siqwell\Eagle\Methods;
 
 class RecordApiTest extends TestCase
 {
@@ -16,17 +12,9 @@ class RecordApiTest extends TestCase
 
     public function testFind()
     {
-        $recordApi = new RecordApi(new HttpClient(new ApiToken()), new Methods());
+        $recordApi = new RecordApi($this->createHttpClient(), new Methods());
 
         $record = $recordApi->find(self::RECORD_ID);
-        /** @var \Siqwell\Eagle\Models\Record $record */
-//        $record = $this->setMapper(RecordMapper::class)->get(
-//            new Request(
-//                Methods::RECORD_GET_INFO['method'],
-//                Methods::RECORD_GET_INFO['path'],
-//                $parameters
-//            )
-//        );
 
         $this->assertFalse($record->adult);
         $this->assertCount(3, $record->genres);
@@ -34,20 +22,10 @@ class RecordApiTest extends TestCase
 
     public function testFind_NotExists()
     {
-        $parameters = array_merge([
-            'id' => self::RECORD_ID
-        ]);
+        $recordApi = new RecordApi($this->createHttpClient(), new Methods());
 
-        /** @var \Siqwell\Eagle\Models\Record $record */
-        $record = $this->setMapper(RecordMapper::class)->get(
-            new Request(
-                Methods::RECORD_GET_INFO['method'],
-                Methods::RECORD_GET_INFO['path'],
-                $parameters
-            )
-        );
+        $record = $recordApi->find(self::RECORD_NOT_EXIST_ID);
 
-        $this->assertFalse($record->adult);
-        $this->assertCount(3, $record->genres);
+        $this->assertFalse($record);
     }
 }
