@@ -12,12 +12,13 @@ class RecordApiTest extends TestCase
 
     public function testFind()
     {
-        $recordApi = new RecordApi($this->createHttpClient(), new Methods());
+        $recordApi = new RecordApi($this->createHttpClient());
 
         $record = $recordApi->find(self::RECORD_ID);
 
-        $this->assertFalse($record->adult);
-        $this->assertCount(3, $record->genres);
+        $data = $this->getResponseDataFromFile(Methods::RECORD_GET_INFO['path'], ['id' => self::RECORD_ID]);
+
+        $this->assertEquals((array)$data, (array)$record);
     }
 
     public function testFind_NotExists()

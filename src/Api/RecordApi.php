@@ -5,6 +5,7 @@ namespace Siqwell\Eagle\Api;
 use Siqwell\Eagle\HttpClient\Request;
 use Siqwell\Eagle\Mappers\RecordMapper;
 use Siqwell\Eagle\Mappers\StatisticMapper;
+use Siqwell\Eagle\Methods;
 
 class RecordApi extends AbstractApi
 {
@@ -22,8 +23,8 @@ class RecordApi extends AbstractApi
         
         $result = $this->setMapper(RecordMapper::class)->get(
             new Request(
-                self::$methods::RECORD_GET_INFO['method'],
-                self::$methods::RECORD_GET_INFO['path'],
+                Methods::RECORD_GET_INFO['method'],
+                Methods::RECORD_GET_INFO['path'],
                 $parameters
             )
         );
@@ -52,8 +53,8 @@ class RecordApi extends AbstractApi
 
         $result = $this->setMapper(StatisticMapper::class)->get(
             new Request(
-                self::$methods::RECORD_GET_STATISTICS['method'],
-                self::$methods::RECORD_GET_STATISTICS['path'],
+                Methods::RECORD_GET_STATISTICS['method'],
+                Methods::RECORD_GET_STATISTICS['path'],
                 $parameters
             )
         );
@@ -74,8 +75,8 @@ class RecordApi extends AbstractApi
     {
         $result = $this->setMapper(StatisticMapper::class)->get(
             new Request(
-                self::$methods::RECORDS_GET_STATISTICS['method'],
-                self::$methods::RECORDS_GET_STATISTICS['path'],
+                Methods::RECORDS_GET_STATISTICS['method'],
+                Methods::RECORDS_GET_STATISTICS['path'],
                 $options
             )
         );

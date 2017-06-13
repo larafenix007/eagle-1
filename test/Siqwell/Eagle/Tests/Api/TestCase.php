@@ -48,4 +48,16 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
     {
         return $this->api->setMapper($mapper);
     }
+
+    public function getResponseDataFromFile($method, $parameters = [])
+    {
+        $config = $this->createConfig();
+        $path =  $config['base_uri'] . '/' . $method;
+
+        foreach ($parameters as $var => $val) {
+            $path = str_replace('{' . $var . '}', $val, $path);
+        }
+
+        return file_exists($path) ? @\GuzzleHttp\json_decode(file_get_contents($path)) : false;
+    }
 }
