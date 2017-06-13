@@ -28,19 +28,15 @@ abstract class AbstractApi
      * @var string|\Closure|null
      */
     protected $mapper;
-
-    protected static $methods;
     
     /**
      * Api constructor.
      *
      * @param HttpClient $client
-     * @param Methods $methods
      */
-    public function __construct(HttpClient $client, Methods $methods)
+    public function __construct(HttpClient $client)
     {
         $this->client = $client;
-        self::$methods = $methods;
     }
     
     /**
