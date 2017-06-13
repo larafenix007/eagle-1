@@ -4,11 +4,15 @@ namespace Siqwell\Eagle\Models;
 
 class Record extends AbstractModel
 {
-    public $adult;
-    public $genres;
-
-    public static $properties = [
-        'adult',
-        'genres'
-    ];
+    public $id;
+    public $name;
+    public $description;
+    /** @var  array */
+    public $tags;
+    /** @var  int */
+    public $duration;
+    public $origin;
+    public $origin_size;
+    /** @var  array */
+    public $record_files;
 }

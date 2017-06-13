@@ -13,4 +13,12 @@ class AbstractModel
      * @var array
      */
     public static $properties = [];
+
+    /**
+     * AbstractModel constructor.
+     */
+    public function __construct()
+    {
+        self::$properties = array_keys(get_object_vars($this));
+    }
 }
