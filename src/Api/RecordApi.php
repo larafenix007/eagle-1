@@ -43,7 +43,7 @@ class RecordApi extends AbstractApi
      * date_to – дата фильтра “до”
      * uniq = true – для уникальных просмотров
      */
-    public function statistics($id, $options)
+    public function statistics($id, array $options = [])
     {
         $parameters = array_merge([
                 'id' => $id
@@ -71,7 +71,7 @@ class RecordApi extends AbstractApi
      * date_to – дата фильтра “до”
      * uniq = true – для уникальных просмотров
      */
-    public function allStatistics($options)
+    public function allStatistics(array $options = [])
     {
         $result = $this->setMapper(StatisticMapper::class)->get(
             new Request(

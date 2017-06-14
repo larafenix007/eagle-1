@@ -18,7 +18,7 @@ class RecordApiTest extends TestCase
 
         $data = $this->getResponseDataFromFile(Methods::RECORD_GET_INFO['path'], ['id' => self::RECORD_ID]);
 
-        $this->assertEquals((array)$data, (array)$record);
+        $this->assertEquals($data, (array)$record);
     }
 
     public function testFind_NotExists()
@@ -28,5 +28,27 @@ class RecordApiTest extends TestCase
         $record = $recordApi->find(self::RECORD_NOT_EXIST_ID);
 
         $this->assertFalse($record);
+    }
+
+    public function testStatistics()
+    {
+        $recordApi = new RecordApi($this->createHttpClient());
+
+        $statistics = $recordApi->statistics(self::RECORD_ID);
+
+        $data = $this->getResponseDataFromFile(Methods::RECORD_GET_STATISTICS['path'], ['id' => self::RECORD_ID]);
+
+        $this->assertEquals($data, (array)$statistics);
+    }
+
+    public function testAllStatistics()
+    {
+        $recordApi = new RecordApi($this->createHttpClient());
+
+        $statistics = $recordApi->allStatistics();
+
+        $data = $this->getResponseDataFromFile(Methods::RECORD_GET_STATISTICS['path'], ['id' => self::RECORD_ID]);
+
+        $this->assertEquals($data, (array)$statistics);
     }
 }

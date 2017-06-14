@@ -58,6 +58,6 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
             $path = str_replace('{' . $var . '}', $val, $path);
         }
 
-        return file_exists($path) ? @\GuzzleHttp\json_decode(file_get_contents($path)) : false;
+        return file_exists($path) ? @\GuzzleHttp\json_decode(file_get_contents($path), true) : false;
     }
 }
