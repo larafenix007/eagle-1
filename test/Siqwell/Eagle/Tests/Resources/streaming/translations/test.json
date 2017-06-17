@@ -1,0 +1,22 @@
+{
+  "id" : "1",
+  "name" : "test1",
+  "status" : "test1",
+  "description" : "test1",
+  "stream_name" : "test1",
+  "url" : "test1.url",
+  "announce" : "test1",
+  "created_at" : "test1",
+  "updated_at" : "test1",
+  "starts_at" : "test1",
+  "ad_template_id" : "test1",
+  "billing_package" : "test1",
+  "billing_price" : "test1",
+  "billing_product" : "test1",
+  "age_restrictions_type" : "test1",
+  "country_access_template_id" : "test1",
+  "player_template_id" : "test1",
+  "site_access_template_id" : "test1",
+  "account" : "test1",
+  "user" : "test1"
+}
