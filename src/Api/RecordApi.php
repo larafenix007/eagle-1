@@ -6,6 +6,7 @@ use Siqwell\Eagle\HttpClient\Request;
 use Siqwell\Eagle\Mappers\RecordMapper;
 use Siqwell\Eagle\Mappers\SimpleMapper;
 use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Models\Record;
 
 class RecordApi extends AbstractApi
 {
@@ -15,7 +16,7 @@ class RecordApi extends AbstractApi
      * @return \Siqwell\Eagle\Models\Record
      * ID – идентификатор записи
      */
-    public function find($id)
+    public function find($id) : Record
     {
         $parameters = [
             'id' => $id
@@ -43,7 +44,7 @@ class RecordApi extends AbstractApi
      * date_to – дата фильтра “до”
      * uniq = true – для уникальных просмотров
      */
-    public function statistics($id, array $options = [])
+    public function statistics($id, array $options = []) : array
     {
         $parameters = array_merge([
                 'id' => $id
@@ -71,7 +72,7 @@ class RecordApi extends AbstractApi
      * date_to – дата фильтра “до”
      * uniq = true – для уникальных просмотров
      */
-    public function allStatistics(array $options = [])
+    public function allStatistics(array $options = []) : array
     {
         $result = $this->setMapper(SimpleMapper::class)->get(
             new Request(
@@ -94,7 +95,7 @@ class RecordApi extends AbstractApi
      * type – тип выдаваемой ссылки (поддерживается только HLS), необязательный
      * ip – IP адрес, для которого будет действительна ссылка. По умолчанию – IP адрес клиента API запроса
      */
-    public function permalinkUrl($id, $options = [])
+    public function permalinkUrl($id, array $options = []) : array
     {
         $parameters = array_merge([
                 'id' => $id
