@@ -9,12 +9,27 @@ class RecordApiTest extends TestCase
 {
     const RECORD_ID = 'test';
     const RECORD_NOT_EXIST_ID = 'not_exist';
+    
+    /** @var  RecordApi */
+    private $recordApi;
 
+    protected function setUp()
+    {
+        parent::setUp();
+        
+        $this->recordApi = new RecordApi($this->createHttpClient());
+    }
+    
+    protected function tearDown()
+    {
+        unset($this->recordApi);
+        
+        parent::tearDown();
+    }
+    
     public function testFind()
     {
-        $recordApi = new RecordApi($this->createHttpClient());
-
-        $record = $recordApi->find(self::RECORD_ID);
+        $record = $this->recordApi->find(self::RECORD_ID);
 
         $data = $this->getResponseDataFromFile(Methods::RECORD_GET_INFO['path'], ['id' => self::RECORD_ID]);
 
@@ -23,18 +38,14 @@ class RecordApiTest extends TestCase
 
     public function testFind_NotExists()
     {
-        $recordApi = new RecordApi($this->createHttpClient(), new Methods());
-
-        $record = $recordApi->find(self::RECORD_NOT_EXIST_ID);
+        $record = $this->recordApi->find(self::RECORD_NOT_EXIST_ID);
 
         $this->assertFalse($record);
     }
 
     public function testStatistics()
     {
-        $recordApi = new RecordApi($this->createHttpClient());
-
-        $statistics = $recordApi->statistics(self::RECORD_ID);
+        $statistics = $this->recordApi->statistics(self::RECORD_ID);
 
         $data = $this->getResponseDataFromFile(Methods::RECORD_GET_STATISTICS['path'], ['id' => self::RECORD_ID]);
 
@@ -43,12 +54,19 @@ class RecordApiTest extends TestCase
 
     public function testAllStatistics()
     {
-        $recordApi = new RecordApi($this->createHttpClient());
+        $statistics = $this->recordApi->allStatistics();
 
-        $statistics = $recordApi->allStatistics();
+        $data = $this->getResponseDataFromFile(Methods::RECORDS_GET_STATISTICS['path'], ['id' => self::RECORD_ID]);
 
-        $data = $this->getResponseDataFromFile(Methods::RECORD_GET_STATISTICS['path'], ['id' => self::RECORD_ID]);
-
+        $this->assertEquals($data, (array)$statistics);
+    }
+    
+    public function testPermalinkUrl()
+    {
+        $statistics = $this->recordApi->permalinkUrl(self::RECORD_ID);
+    
+        $data = $this->getResponseDataFromFile(Methods::RECORD_PERMA_LINK['path'], ['id' => self::RECORD_ID]);
+    
         $this->assertEquals($data, (array)$statistics);
     }
 }

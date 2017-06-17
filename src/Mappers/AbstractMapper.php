@@ -6,7 +6,7 @@ namespace Siqwell\Eagle\Mappers;
  * Class Mapper
  * @package Siqwell\Eagle\Mappers
  */
-abstract class Mapper
+abstract class AbstractMapper
 {
     protected $response;
 
@@ -19,7 +19,7 @@ abstract class Mapper
      */
     public function __construct($content, $url = null, $base_href = null)
     {
-        if (! $response = @\GuzzleHttp\json_decode($content, true)) {
+        if (! $response = @\json_decode($content, true)) {
             throw new \InvalidArgumentException('json_decode error: ' . json_last_error_msg());
         }
 

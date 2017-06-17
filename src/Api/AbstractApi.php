@@ -7,8 +7,7 @@ use GuzzleHttp\Psr7\Uri;
 use Illuminate\Support\Str;
 use Siqwell\Eagle\HttpClient\HttpClient;
 use Siqwell\Eagle\HttpClient\Request;
-use Siqwell\Eagle\Mappers\Mapper;
-use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Mappers\AbstractMapper;
 
 /**
  * Class ContractApi
@@ -70,12 +69,12 @@ abstract class AbstractApi
         if ($this->mapper instanceof \Closure) {
             return call_user_func_array($this->mapper, [$result]);
         }
-        
+
         if (is_string($this->mapper) &&
             class_exists($this->mapper) &&
-            is_subclass_of($this->mapper, Mapper::class, true)
+            is_subclass_of($this->mapper, AbstractMapper::class, true)
         ) {
-            /** @var Mapper $mapper */
+            /** @var AbstractMapper $mapper */
             $mapper = new $this->mapper($result, $url, $this->client->getConfig('base_uri'));
 
             return $mapper->get();

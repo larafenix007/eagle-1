@@ -4,7 +4,7 @@ namespace Siqwell\Eagle\Api;
 
 use Siqwell\Eagle\HttpClient\Request;
 use Siqwell\Eagle\Mappers\RecordMapper;
-use Siqwell\Eagle\Mappers\StatisticMapper;
+use Siqwell\Eagle\Mappers\SimpleMapper;
 use Siqwell\Eagle\Methods;
 
 class RecordApi extends AbstractApi
@@ -12,7 +12,7 @@ class RecordApi extends AbstractApi
     /**
      * @param $id
      * @throws \Exception
-     * @return mixed
+     * @return \Siqwell\Eagle\Models\Record
      * ID – идентификатор записи
      */
     public function find($id)
@@ -37,7 +37,7 @@ class RecordApi extends AbstractApi
      * @param $options
      * @throws \Exception
      *
-     * @return mixed
+     * @return array
      * ID – идентификатор записи
      * date_from – дата фильтра “от”
      * date_to – дата фильтра “до”
@@ -51,7 +51,7 @@ class RecordApi extends AbstractApi
             $options
         );
 
-        $result = $this->setMapper(StatisticMapper::class)->get(
+        $result = $this->setMapper(SimpleMapper::class)->get(
             new Request(
                 Methods::RECORD_GET_STATISTICS['method'],
                 Methods::RECORD_GET_STATISTICS['path'],
@@ -66,14 +66,14 @@ class RecordApi extends AbstractApi
      * @param $options
      * @throws \Exception
      *
-     * @return mixed
+     * @return array
      * date_from – дата фильтра “от”
      * date_to – дата фильтра “до”
      * uniq = true – для уникальных просмотров
      */
     public function allStatistics(array $options = [])
     {
-        $result = $this->setMapper(StatisticMapper::class)->get(
+        $result = $this->setMapper(SimpleMapper::class)->get(
             new Request(
                 Methods::RECORDS_GET_STATISTICS['method'],
                 Methods::RECORDS_GET_STATISTICS['path'],
@@ -81,6 +81,35 @@ class RecordApi extends AbstractApi
             )
         );
 
+        return $result;
+    }
+    
+    /**
+     * @param       $id
+     * @param array $options
+     * @throws \Exception
+     *
+     * @return array
+     * id – идентификатор записи
+     * type – тип выдаваемой ссылки (поддерживается только HLS), необязательный
+     * ip – IP адрес, для которого будет действительна ссылка. По умолчанию – IP адрес клиента API запроса
+     */
+    public function permalinkUrl($id, $options = [])
+    {
+        $parameters = array_merge([
+                'id' => $id
+            ],
+            $options
+        );
+        
+        $result = $this->setMapper(SimpleMapper::class)->get(
+            new Request(
+                Methods::RECORD_PERMA_LINK['method'],
+                Methods::RECORD_PERMA_LINK['path'],
+                $parameters
+            )
+        );
+    
         return $result;
     }
 }

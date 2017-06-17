@@ -18,6 +18,7 @@ class Methods
     const RECORD_DELETE = ['method' => 'DELETE', 'path' => '/media/records/{id}.json'];
     const RECORD_UPLOAD_FROM_FTP = ['method' => 'POST', 'path' => '/media/records.json'];
     const RECORD_UPLOAD_FROM_HTTP = ['method' => 'POST', 'path' => '/media/records.json'];
+    const RECORD_PERMA_LINK = ['method' => 'GET', 'path' => '/media/records/{id}/watch.json'];
     const NEW_FILE_FROM_FTP = ['method' => 'POST', 'path' => '/media/records/{id}/upload.json'];
     const NEW_FILE_FROM_HTTP = ['method' => 'POST', 'path' => '/media/records/{id}/upload.json'];
     

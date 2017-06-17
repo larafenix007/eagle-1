@@ -6,7 +6,7 @@ namespace Siqwell\Eagle\Mappers;
  * Class Mapper
  * @package Siqwell\Eagle\Mappers
  */
-class FilterMapper extends Mapper
+class FilterMapper extends AbstractMapper
 {
     /**
      * @var \Illuminate\Support\Collection

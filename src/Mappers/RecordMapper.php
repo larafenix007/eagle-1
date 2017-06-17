@@ -9,7 +9,7 @@ use Siqwell\Eagle\Models\Record;
  * Class Mapper
  * @package Siqwell\Eagle\Mappers
  */
-class RecordMapper extends Mapper
+class RecordMapper extends AbstractMapper
 {
     public function get()
     {
