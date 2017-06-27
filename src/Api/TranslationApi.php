@@ -36,7 +36,7 @@ class TranslationApi extends AbstractApi
      *
      * @return \Siqwell\Eagle\Models\Translation
      */
-    public function find($id) : Translation
+    public function find($id) : ?Translation
     {
         $parameters = [
             'id' => $id

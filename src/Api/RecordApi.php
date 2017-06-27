@@ -16,7 +16,7 @@ class RecordApi extends AbstractApi
      * @return \Siqwell\Eagle\Models\Record
      * ID – идентификатор записи
      */
-    public function find($id) : Record
+    public function find($id) : ?Record
     {
         $parameters = [
             'id' => $id

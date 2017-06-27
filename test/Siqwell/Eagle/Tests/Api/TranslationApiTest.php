@@ -9,6 +9,7 @@ use Siqwell\Eagle\Models\Translation;
 class TranslationApiTest extends TestCase
 {
     const TRANSLATION_ID = 'test';
+    const TRANSLATION_NOT_EXIST_ID = 'not_exist';
     
     /** @var  TranslationApi */
     private $translationApi;
@@ -32,7 +33,7 @@ class TranslationApiTest extends TestCase
         $translations = $this->translationApi->list();
 
         $data = $this->getResponseDataFromFile(Methods::TRANSLATIONS_GET_LIST['path']);
-        
+
         $translations = array_map(function (Translation $translation) {
             return (array)$translation;
         }, $translations);
@@ -46,6 +47,14 @@ class TranslationApiTest extends TestCase
     
         $data = $this->getResponseDataFromFile(Methods::TRANSLATION_GET_INFO['path'], ['id' => self::TRANSLATION_ID]);
     
+        $this->assertInstanceOf(Translation::class, $translation);
         $this->assertEquals($data, (array)$translation);
+    }
+
+    public function testFind_NotExists()
+    {
+        $translation = $this->translationApi->find(self::TRANSLATION_NOT_EXIST_ID);
+
+        $this->assertNull($translation);
     }
 }

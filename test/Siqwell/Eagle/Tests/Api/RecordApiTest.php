@@ -4,6 +4,7 @@ namespace Siqwell\Eagle\Tests\Api;
 
 use Siqwell\Eagle\Api\RecordApi;
 use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Models\Record;
 
 class RecordApiTest extends TestCase
 {
@@ -33,6 +34,7 @@ class RecordApiTest extends TestCase
 
         $data = $this->getResponseDataFromFile(Methods::RECORD_GET_INFO['path'], ['id' => self::RECORD_ID]);
 
+        $this->assertInstanceOf(Record::class, $record);
         $this->assertEquals($data, (array)$record);
     }
 
@@ -40,7 +42,7 @@ class RecordApiTest extends TestCase
     {
         $record = $this->recordApi->find(self::RECORD_NOT_EXIST_ID);
 
-        $this->assertFalse($record);
+        $this->assertNull($record);
     }
 
     public function testStatistics()

@@ -106,19 +106,19 @@ abstract class AbstractApi
             /** @var \Psr\Http\Message\ResponseInterface $response */
             $response = $this->client->$method($url);
         } catch (ConnectException $e) {
-            return false;
+            return null;
         }
         
         if ($response->getStatusCode() !== 200) {
-            return false;
+            return null;
         }
         
         if (!$content = $response->getBody()->getContents()) {
-            return false;
+            return null;
         }
         
         if (!$content = $this->checkContent($content)) {
-            return false;
+            return null;
         }
         
         return $this->isMapped() ? $this->callMap($content, $url) : $content;

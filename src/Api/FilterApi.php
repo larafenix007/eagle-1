@@ -8,6 +8,17 @@ use Siqwell\Eagle\Methods;
 
 class FilterApi extends AbstractApi
 {
+    /**
+     * @param $id - Идентификатор фильтра (ID) – как элемент URL запроса
+     * @param array $parameters
+     *
+     * @return mixed
+     *
+     * page – страница
+     * pagelimit – количество записей на странице
+     * Параметры фильтра, если имеются. Указаны на странице экспорта фильтра
+     * order – сортировка
+     */
     public function find($id, array $parameters = [])
     {
         $parameters = array_merge([

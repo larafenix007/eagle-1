@@ -32,6 +32,8 @@ class AlbumApiTest extends TestCase
         $data = $this->getResponseDataFromFile(Methods::ALBUM_GET['path']);
         
         $albums = array_map(function (Album $album) {
+            $this->assertInstanceOf(Album::class, $album);
+
             return (array)$album;
         }, $albums);
 
