@@ -57,6 +57,14 @@ abstract class AbstractApi
         
         return $this;
     }
+
+    /**
+     * @return \Closure|null|string
+     */
+    public function getMapper()
+    {
+        return $this->mapper;
+    }
     
     /**
      * @param      $result
@@ -164,5 +172,13 @@ abstract class AbstractApi
     protected function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * @param HttpClient $client
+     */
+    public function setClient(HttpClient $client)
+    {
+        $this->client = $client;
     }
 }

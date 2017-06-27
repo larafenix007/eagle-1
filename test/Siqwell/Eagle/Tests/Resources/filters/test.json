@@ -1,0 +1,60 @@
+[
+    {
+        "id" : "test",
+        "name" : "test name",
+        "description" : "test description",
+        "tags" :[
+          "tag1",
+          "tag2",
+          "tag3"
+        ],
+        "duration" : 120,
+        "origin" : "test.url",
+        "origin_size" : 120000,
+        "record_files" : [
+            {
+                "url" : "test url1",
+                "size" : 120000,
+                "width" : 120,
+                "height" : 120,
+                "bitrate" : 120
+            },
+            {
+                "url" : "test url2",
+                "size" : 120000,
+                "width" : 120,
+                "height" : 120,
+                "bitrate" : 120
+            }
+        ]
+    },
+    {
+        "id" : "test2",
+        "name" : "test2 name",
+        "description" : "test2 description",
+        "tags" :[
+            "tag1",
+            "tag2",
+            "tag3"
+        ],
+        "duration" : 120,
+        "origin" : "test2.url",
+        "origin_size" : 120000,
+        "record_files" : [
+            {
+                "url" : "test2 url1",
+                "size" : 120000,
+                "width" : 120,
+                "height" : 120,
+                "bitrate" : 120
+            },
+            {
+                "url" : "test2 url2",
+                "size" : 120000,
+                "width" : 120,
+                "height" : 120,
+                "bitrate" : 120
+            }
+        ]
+    }
+]
