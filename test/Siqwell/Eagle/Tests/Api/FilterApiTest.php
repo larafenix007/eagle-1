@@ -8,7 +8,7 @@ use Siqwell\Eagle\Models\Record;
 
 class FilterApiTest extends TestCase
 {
-    const FILTER_ID = 'test';
+    const FILTER_ID = 44509;
 
     /** @var  FilterApi */
     private $filterApi;
@@ -26,19 +26,19 @@ class FilterApiTest extends TestCase
 
         parent::tearDown();
     }
-    
+
     public function testFind()
     {
-        $filters = $this->filterApi->find(self::FILTER_ID);
+        $filter = $this->filterApi->find(self::FILTER_ID);
 
         $data = $this->getResponseDataFromFile(Methods::FILTER_GET_RECORDS['path'], ['id' => self::FILTER_ID]);
 
-        $filters = array_map(function (Record $filter) {
-            $this->assertInstanceOf(Record::class, $filter);
+        $filter->records = array_map(function (Record $record) {
+            $this->assertInstanceOf(Record::class, $record);
 
-            return (array)$filter;
-        }, $filters);
+            return (array)$record;
+        }, $filter->records);
 
-        $this->assertEquals($data, $filters);
+        $this->assertEquals($data, (array)$filter);
     }
 }

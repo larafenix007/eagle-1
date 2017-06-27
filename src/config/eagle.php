@@ -3,9 +3,11 @@ return [
     /*
      * Api key
      */
-    'api_key' => '',
+    'api_key' => '--SD8N3jx7LZi-rYz5Wz',
     
     'base_uri' => 'http://api.eagleplatform.com',
+
+    'account' => 'siqwell',
     
     /**
      * Client options

@@ -9,6 +9,8 @@ use Kevinrob\GuzzleCache\CacheMiddleware;
 use Kevinrob\GuzzleCache\Storage\LaravelCacheStorage;
 use Kevinrob\GuzzleCache\Strategy\GreedyCacheStrategy;
 use Phlib\Guzzle\ConvertCharset;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
 use Siqwell\Eagle\ApiToken;
 
 /**
@@ -45,6 +47,34 @@ class HttpClient extends Client
         ], $config);
         
         parent::__construct($config);
+    }
+
+    /**
+     * @param UriInterface|string $uri
+     * @param array $options
+     * @return ResponseInterface
+     */
+    public function get($uri, array $options = [])
+    {
+        $uri = $this->injectAuthInfoToUri($uri);
+
+        return parent::get($uri, $options);
+    }
+
+    private function injectAuthInfoToUri(string $uri) : string
+    {
+        if (is_string($uri)) {
+            $query = parse_url($uri, PHP_URL_QUERY);
+
+            // Returns a string if the URL has parameters or NULL if not
+            if ($query) {
+                $uri .= "&account={$this->getConfig('account')}&auth_token={$this->apiToken->getToken()}";
+            } else {
+                $uri .= "?account={$this->getConfig('account')}&auth_token={$this->apiToken->getToken()}";
+            }
+        }
+
+        return $uri;
     }
     
     /**

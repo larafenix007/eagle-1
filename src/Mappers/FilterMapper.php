@@ -3,6 +3,7 @@
 namespace Siqwell\Eagle\Mappers;
 
 use Siqwell\Eagle\Common\ObjectHydrator;
+use Siqwell\Eagle\Models\Filter;
 use Siqwell\Eagle\Models\Record;
 
 /**
@@ -18,15 +19,16 @@ class FilterMapper extends AbstractMapper
     
     public function get()
     {
-        $result = [];
-
         $objectHydrator = new ObjectHydrator();
-        foreach ($this->response as $row) {
+
+        /** @var Filter $filter */
+        $filter = $objectHydrator->hydrate(new Filter(), $this->response);
+
+        foreach ($filter->records as $i => $record) {
             /** @var Record $record */
-            $record = $objectHydrator->hydrate(new Record(), $row);
-            $result[] = $record;
+            $filter->records[$i] = $objectHydrator->hydrate(new Record(), $record);
         }
 
-        return $result;
+        return $filter;
     }
 }

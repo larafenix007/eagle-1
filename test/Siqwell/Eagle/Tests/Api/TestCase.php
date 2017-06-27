@@ -49,6 +49,16 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
         return $this->api->setMapper($mapper);
     }
 
+    public function setFakeApiClient()
+    {
+        $this->api->setClient(new HttpClient(new ApiToken()), new Methods());
+    }
+
+    public function setRealApiClient()
+    {
+        $this->api->setClient(new \Siqwell\Eagle\HttpClient\HttpClient(new ApiToken()), new Methods());
+    }
+
     public function getResponseDataFromFile($method, $parameters = [])
     {
         $config = $this->createConfig();
@@ -58,6 +68,18 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
             $path = str_replace('{' . $var . '}', $val, $path);
         }
 
-        return file_exists($path) ? @\json_decode(file_get_contents($path), true) : false;
+        if (!file_exists($path)) {
+            throw new \RuntimeException('File does not found');
+        }
+
+        if (!$response = @\json_decode(file_get_contents($path), true)) {
+             throw new \RuntimeException("Error to decode json file '$path'");
+        }
+
+        if (!isset($response['data'])) {
+            throw new \RuntimeException("Data field not found in response body file '$path'");
+        }
+
+        return $response['data'];
     }
 }

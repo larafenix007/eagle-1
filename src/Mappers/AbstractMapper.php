@@ -9,6 +9,10 @@ namespace Siqwell\Eagle\Mappers;
 abstract class AbstractMapper
 {
     protected $response;
+    protected $time;
+    protected $version;
+    protected $errors;
+    protected $status;
 
     /**
      * Mapper constructor.
@@ -23,7 +27,17 @@ abstract class AbstractMapper
             throw new \InvalidArgumentException('json_decode error: ' . json_last_error_msg());
         }
 
-        $this->response = $response;
+        if (! $response['data']) {
+            throw new \InvalidArgumentException('Response data');
+        }
+
+        $this->response = $response['data'];
+        $this->status = $response['status'] ?? 400;
+        $this->errors = $response['errors'] ?? [];
+
+        if (isset($response['version'])) {
+            $this->version = $response['version'];
+        }
     }
     
     /**

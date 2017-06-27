@@ -13,9 +13,9 @@ class EagleServiceProvider extends ServiceProvider
             $this->defaultConfig() => config_path('eagle.php'),
         ]);
         
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
-        
-        $this->app->make('Siqwell\Eagle\EagleController');
+//        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+//
+//        $this->app->make('Siqwell\Eagle\EagleController');
     }
     
     /**

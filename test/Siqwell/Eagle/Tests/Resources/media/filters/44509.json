@@ -1,0 +1,42 @@
+{
+  "time": "2017-06-27T16:36:19+03:00",
+  "version": "3.0",
+  "data": {
+    "id": 44509,
+    "name": "test",
+    "total_entries": 1,
+    "total_pages": 1,
+    "current_page": 1,
+    "records": [
+      {
+        "id": 777777,
+        "name": "#3 Laravel 5- Первый контроллер.mp4",
+        "description": null,
+        "tags": "",
+        "duration": 440790,
+        "origin": null,
+        "origin_size": 19449497,
+        "albums": [],
+        "is_processed": true,
+        "is_hd": true,
+        "screenshots": [
+          "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_1_360.jpg",
+          "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_2_360.jpg",
+          "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_3_360.jpg",
+          "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_4_360.jpg",
+          "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_5_360.jpg"
+        ],
+        "current_screenshot": "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_1_360.jpg",
+        "current_screenshot_small": "//static.eaglecdn.com/siqwell/20170627/5b0614fe74194_1_360.jpg",
+        "view_count": 0,
+        "click_url": "",
+        "user_id": 19096,
+        "recorded_at": null,
+        "updated_at": "2017-06-27T16:32:14+03:00",
+        "created_at": "2017-06-27T16:30:39+03:00"
+      }
+    ]
+  },
+  "errors": [],
+  "status": 200
+}
