@@ -4,7 +4,6 @@ namespace Siqwell\Eagle\Tests;
 
 use Orchestra\Database\ConsoleServiceProvider;
 use Siqwell\Eagle\ApiToken;
-use Siqwell\Eagle\EagleServiceProvider;
 use Siqwell\Eagle\Tests\HttpClient\HttpClient;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -12,35 +11,38 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            EagleServiceProvider::class,
             ConsoleServiceProvider::class
         ];
     }
 
-    protected function getPackageAliases($app)
+    public function createFakeHttpClient() : HttpClient
     {
-        return [
-            'eagle' => EagleServiceProvider::class
-        ];
+        return new HttpClient($this->createApiToken(), $this->createFakeConfig());
     }
 
-    public function createHttpClient() : HttpClient
+    public function createRealHttpClient() : \Siqwell\Eagle\HttpClient\HttpClient
     {
-        return new HttpClient($this->createApiToken(), $this->createConfig());
+        return new \Siqwell\Eagle\HttpClient\HttpClient($this->createApiToken(true), $this->createRealConfig());
     }
 
-    protected function createApiToken() : ApiToken
+    protected function createApiToken($isReal = false) : ApiToken
     {
-        $config = $this->createConfig();
+        $config = $isReal ? $this->createRealConfig() : $this->createFakeConfig();
 
         return new ApiToken($config['api_key']);
     }
 
-    protected function createConfig() : array
+    protected function createFakeConfig() : array
     {
         return [
             'api_key' => '',
             'base_uri' => __DIR__ . '/Resources'
         ];
+    }
+
+    protected function createRealConfig()
+    {
+        //TODO: fix no load config
+        return include __DIR__ . '/../../../../src/config/eagle.php';
     }
 }

@@ -61,7 +61,7 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
 
     public function getResponseDataFromFile($method, $parameters = [])
     {
-        $config = $this->createConfig();
+        $config = $this->createFakeConfig();
         $path =  $config['base_uri'] . '/' . $method;
 
         foreach ($parameters as $var => $val) {
@@ -69,7 +69,7 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
         }
 
         if (!file_exists($path)) {
-            throw new \RuntimeException('File does not found');
+            throw new \RuntimeException("Resource test file '$path' does not found");
         }
 
         if (!$response = @\json_decode(file_get_contents($path), true)) {

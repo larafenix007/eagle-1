@@ -17,7 +17,7 @@ class FilterApiTest extends TestCase
     {
         parent::setUp();
 
-        $this->filterApi = new FilterApi($this->createHttpClient());
+        $this->filterApi = new FilterApi($this->createRealHttpClient());
     }
 
     protected function tearDown()
