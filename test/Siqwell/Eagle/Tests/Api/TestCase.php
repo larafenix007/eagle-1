@@ -82,4 +82,11 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
 
         return $response['data'];
     }
+
+    protected function getUrlWithoutQuery($url)
+    {
+        $urlParts = explode('?', $url);
+
+        return $urlParts[0];
+    }
 }

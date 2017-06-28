@@ -1,0 +1,76 @@
+{
+  "time": "2017-06-28T13:16:14+03:00",
+  "version": "3.0",
+  "data": {
+    "record": {
+      "id": 777777,
+      "name": "#3 Laravel 5- Первый контроллер.mp4",
+      "description": null,
+      "duration": 440790,
+      "origin": "http://siqwell.media.eagleplatform.com/api/records/secure_redirect?record_id=777777&type=http&resource_hash=MjAxNzA2MjcvNWIwNjE0ZmU3NDE5NC5tcDQ",
+      "origin_size": 19449497,
+      "is_hd": true,
+      "is_processed": true,
+      "screenshot": "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_1_360.jpg",
+      "screenshot_small": "//static.eaglecdn.com/siqwell/20170627/5b0614fe74194_1_360.jpg",
+      "screenshots": {
+        "0": "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_1_360.jpg",
+        "1": "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_2_360.jpg",
+        "2": "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_3_360.jpg",
+        "3": "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_4_360.jpg",
+        "4": "http://static.eaglecdn.com/siqwell/20170627/5b0614fe74194_5_360.jpg"
+      },
+      "subtitles": [
+        {
+          "language": "sprite",
+          "file_url": "http://siqwell.media.eagleplatform.com/api/records/777777/subtitles?language=sprite"
+        }
+      ],
+      "view_count": 0,
+      "click_url": "",
+      "user_id": 19096,
+      "recorded_at": null,
+      "updated_at": "2017-06-27T16:32:14+03:00",
+      "created_at": "2017-06-27T16:30:39+03:00",
+      "albums": [],
+      "tags": [],
+      "record_files": [
+        {
+          "width": 1280,
+          "height": 720,
+          "size": 47969542,
+          "url": "http://siqwell.media.eagleplatform.com/api/records/secure_redirect?record_id=777777&type=http&resource_hash=MjAxNzA2MjcvNWIwNjE0ZmU3NDE5NF92aWRlb183MjBwLm1wNA",
+          "bitrate": 1600,
+          "resource_type": "video",
+          "error": null,
+          "status": "ok",
+          "percent": 99
+        },
+        {
+          "width": 854,
+          "height": 480,
+          "size": 35158349,
+          "url": "http://siqwell.media.eagleplatform.com/api/records/secure_redirect?record_id=777777&type=http&resource_hash=MjAxNzA2MjcvNWIwNjE0ZmU3NDE5NF92aWRlb180ODBwLm1wNA",
+          "bitrate": 800,
+          "resource_type": "video",
+          "error": null,
+          "status": "ok",
+          "percent": 99
+        },
+        {
+          "width": 640,
+          "height": 360,
+          "size": 23824901,
+          "url": "http://siqwell.media.eagleplatform.com/api/records/secure_redirect?record_id=777777&type=http&resource_hash=MjAxNzA2MjcvNWIwNjE0ZmU3NDE5NF92aWRlb18zNjBwLm1wNA",
+          "bitrate": 500,
+          "resource_type": "video",
+          "error": null,
+          "status": "ok",
+          "percent": 97
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "status": 200
+}

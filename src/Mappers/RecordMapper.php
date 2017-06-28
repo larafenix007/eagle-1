@@ -15,6 +15,6 @@ class RecordMapper extends AbstractMapper
     {
         $objectHydrator = new ObjectHydrator();
 
-        return $objectHydrator->hydrate(new Record(), $this->response);
+        return $objectHydrator->hydrate(new Record(), $this->response['record']);
     }
 }

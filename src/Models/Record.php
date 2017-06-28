@@ -17,16 +17,17 @@ class Record extends AbstractModel
     public $albums;
     public $is_processed;
     public $is_hd;
+    public $screenshot;
+    public $screenshot_small;
     public $screenshots;
-    public $current_screenshot;
-    public $current_screenshot_small;
+    public $subtitles;
     public $view_count;
     public $click_url;
     public $user_id;
     public $recorded_at;
     public $updated_at;
     public $created_at;
-//
-//    /** @var  array */
-//    public $record_files;
+
+    /** @var  array */
+    public $record_files;
 }

@@ -27,6 +27,10 @@ abstract class AbstractMapper
             throw new \InvalidArgumentException('json_decode error: ' . json_last_error_msg());
         }
 
+        if (isset($response['errors']) && count($response['errors'])) {
+            throw new \InvalidArgumentException(implode(',', $response['errors']));
+        }
+
         if (! $response['data']) {
             throw new \InvalidArgumentException('Response data');
         }

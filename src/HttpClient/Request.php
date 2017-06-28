@@ -2,6 +2,8 @@
 
 namespace Siqwell\Eagle\HttpClient;
 
+use Illuminate\Support\Str;
+
 class Request
 {
     const METHODS = [
@@ -47,16 +49,30 @@ class Request
         
         $this->replaceVariables();
     }
-    
+
     /**
      * Replace $params in url like {id} to it's value
      */
     public function replaceVariables()
     {
-        foreach ($this->parameters as $var => $val) {
-            $path = str_replace('{' . $var . '}', $val, $this->getPath());
-            $this->setPath($path);
+        $queryAr = [];
+        $path = $this->getPath();
+
+        foreach ($this->parameters as $key => $value)
+        {
+            if (strpos($path, '{' . $key . '}') !== false) {
+                $path = Str::replaceFirst('{' . $key . '}', $value, $path);
+                unset($this->parameters[$key]);
+            } else {
+                $queryAr[$key] = $value;
+            }
         }
+
+        if (count($queryAr)) {
+            //$path .=  '?' . http_build_query($queryAr);
+        }
+
+        $this->setPath($path);
     }
     
     /**
