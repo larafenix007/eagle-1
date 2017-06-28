@@ -5,7 +5,7 @@ namespace Siqwell\Eagle\Models;
  * Class AbstractModel
  * @package Siqwell\Eagle\Model
  */
-class AbstractModel
+abstract class AbstractModel
 {
     /**
      * List of properties to populate by the ObjectHydrator

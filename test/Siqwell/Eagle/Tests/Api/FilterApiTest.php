@@ -4,6 +4,7 @@ namespace Siqwell\Eagle\Tests\Api;
 
 use Siqwell\Eagle\Api\FilterApi;
 use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Models\FilterRecord;
 use Siqwell\Eagle\Models\Record;
 
 class FilterApiTest extends TestCase
@@ -33,8 +34,8 @@ class FilterApiTest extends TestCase
 
         $data = $this->getResponseDataFromFile(Methods::FILTER_GET_RECORDS['path'], ['id' => self::FILTER_ID]);
 
-        $filter->records = array_map(function (Record $record) {
-            $this->assertInstanceOf(Record::class, $record);
+        $filter->records = array_map(function (FilterRecord $record) {
+            $this->assertInstanceOf(FilterRecord::class, $record);
 
             return (array)$record;
         }, $filter->records);
