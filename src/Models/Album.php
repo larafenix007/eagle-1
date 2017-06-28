@@ -8,4 +8,5 @@ class Album extends AbstractModel
     public $name;
     public $total_records;
     public $children;
+    public $color;
 }

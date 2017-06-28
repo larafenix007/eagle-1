@@ -4,7 +4,6 @@ namespace Siqwell\Eagle\Mappers;
 
 use Siqwell\Eagle\Common\ObjectHydrator;
 use Siqwell\Eagle\Models\Album;
-use Siqwell\Eagle\Models\Record;
 
 /**
  * Class Mapper
@@ -17,7 +16,7 @@ class AlbumsMapper extends AbstractMapper
         $result = [];
         
         $objectHydrator = new ObjectHydrator();
-        foreach ($this->response as $row) {
+        foreach ($this->response['albums'] as $row) {
             /** @var Album $album */
             $album = $objectHydrator->hydrate(new Album(), $row);
             if (!$album->children) {

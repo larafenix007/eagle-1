@@ -15,7 +15,7 @@ class AlbumApiTest extends TestCase
     {
         parent::setUp();
         
-        $this->albumApi = new AlbumApi($this->createHttpClient());
+        $this->albumApi = new AlbumApi($this->createRealHttpClient());
     }
     
     protected function tearDown()
@@ -37,6 +37,6 @@ class AlbumApiTest extends TestCase
             return (array)$album;
         }, $albums);
 
-        $this->assertEquals($data, $albums);
+        $this->assertEquals($data['albums'], $albums);
     }
 }
