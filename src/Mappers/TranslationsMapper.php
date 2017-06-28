@@ -12,7 +12,7 @@ class TranslationsMapper extends AbstractMapper
         $result = [];
     
         $objectHydrator = new ObjectHydrator();
-        foreach ($this->response as $row) {
+        foreach ($this->response['translations'] as $row) {
             /** @var Translation $translation */
             $translation = $objectHydrator->hydrate(new Translation(), $row);
             $result[] = $translation;

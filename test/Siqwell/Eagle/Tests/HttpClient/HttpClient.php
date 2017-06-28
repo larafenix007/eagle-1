@@ -19,7 +19,8 @@ class HttpClient extends \Siqwell\Eagle\HttpClient\HttpClient
 
         $filePath = $baseUri . '/' . $uri;
         if (!file_exists($filePath)) {
-            throw new ConnectException("File $filePath does not exists", new \GuzzleHttp\Psr7\Request('GET', $uri));
+            throw new \InvalidArgumentException("File $filePath does not exists");
+            //throw new ConnectException("File $filePath does not exists", new \GuzzleHttp\Psr7\Request('GET', $uri));
         }
 
         $content = file_get_contents($filePath);

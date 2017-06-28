@@ -11,6 +11,6 @@ class TranslationMapper extends AbstractMapper
     {
         $objectHydrator = new ObjectHydrator();
         
-        return $objectHydrator->hydrate(new Translation(), $this->response);
+        return $objectHydrator->hydrate(new Translation(), $this->response['translation']);
     }
 }

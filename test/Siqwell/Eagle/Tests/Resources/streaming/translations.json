@@ -1,46 +1,35 @@
-[
-  {
-    "id" : "1",
-    "name" : "test1",
-    "status" : "test1",
-    "description" : "test1",
-    "stream_name" : "test1",
-    "url" : "test1.url",
-    "announce" : "test1",
-    "created_at" : "test1",
-    "updated_at" : "test1",
-    "starts_at" : "test1",
-    "ad_template_id" : "test1",
-    "billing_package" : "test1",
-    "billing_price" : "test1",
-    "billing_product" : "test1",
-    "age_restrictions_type" : "test1",
-    "country_access_template_id" : "test1",
-    "player_template_id" : "test1",
-    "site_access_template_id" : "test1",
-    "account" : "test1",
-    "user" : "test1"
+{
+  "time": "2017-06-28T18:21:07+03:00",
+  "version": "3.0",
+  "data": {
+    "total_entries": 0,
+    "total_pages": 1,
+    "current_page": 1,
+    "translations": [
+      {
+        "id": "test",
+        "name": "test",
+        "status": "test",
+        "description": "test",
+        "stream_name": "test",
+        "url": "test",
+        "announce": "test",
+        "created_at": "test",
+        "updated_at": "test",
+        "starts_at": "test",
+        "ad_template_id": "test",
+        "billing_package": "test",
+        "billing_price": "test",
+        "billing_product": "test",
+        "age_restrictions_type": "test",
+        "country_access_template_id": "test",
+        "player_template_id": "test",
+        "site_access_template_id": "test",
+        "account": "test",
+        "user": "test"
+      }
+    ]
   },
-  {
-    "id" : "2",
-    "name" : "test2",
-    "status" : "test2",
-    "description" : "test2",
-    "stream_name" : "test2",
-    "url" : "test2.url",
-    "announce" : "test2",
-    "created_at" : "test2",
-    "updated_at" : "test2",
-    "starts_at" : "test2",
-    "ad_template_id" : "test2",
-    "billing_package" : "test2",
-    "billing_price" : "test2",
-    "billing_product" : "test2",
-    "age_restrictions_type" : "test2",
-    "country_access_template_id" : "test2",
-    "player_template_id" : "test2",
-    "site_access_template_id" : "test2",
-    "account" : "test2",
-    "user" : "test2"
-  }
-]
+  "errors": [],
+  "status": 200
+}

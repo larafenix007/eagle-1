@@ -17,8 +17,9 @@ class TranslationApiTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
-        
-        $this->translationApi = new TranslationApi($this->createHttpClient());
+
+        //TODO: change on real API
+        $this->translationApi = new TranslationApi($this->createFakeHttpClient());
     }
     
     protected function tearDown()
@@ -38,7 +39,7 @@ class TranslationApiTest extends TestCase
             return (array)$translation;
         }, $translations);
 
-        $this->assertEquals($data, $translations);
+        $this->assertEquals($data['translations'], $translations);
     }
     
     public function testFind()
@@ -48,13 +49,13 @@ class TranslationApiTest extends TestCase
         $data = $this->getResponseDataFromFile(Methods::TRANSLATION_GET_INFO['path'], ['id' => self::TRANSLATION_ID]);
     
         $this->assertInstanceOf(Translation::class, $translation);
-        $this->assertEquals($data, (array)$translation);
+        $this->assertEquals($data['translation'], (array)$translation);
     }
 
     public function testFind_NotExists()
     {
-        $translation = $this->translationApi->find(self::TRANSLATION_NOT_EXIST_ID);
+        $this->expectException(\InvalidArgumentException::class);
 
-        $this->assertNull($translation);
+        $this->translationApi->find(self::TRANSLATION_NOT_EXIST_ID);
     }
 }
