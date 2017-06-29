@@ -1,5 +1,5 @@
 {
-    "name": "siqwell/eagle",
+    "name": "larafenix007/eagle",
     "description": "Laravel wrapper for Eagleplatform API",
     "keywords": ["laravel", "eagleplatform", "api"],
     "license": "proprietary",
@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "fenix007",
-            "email": "nazarovAlexei@ya.ru"
+            "email": "larafenix007@gmail.com"
         }
     ],
     "minimum-stability": "dev",
