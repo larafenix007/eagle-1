@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Siqwell\\Eagle\\": "src/"
+            "LaraFenix007\\Eagle\\": "src/"
         }
     },
     "require-dev": {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Siqwell\Eagle\Tests\Api;
+namespace LaraFenix007\Eagle\Tests\Api;
 
-use Siqwell\Eagle\Mappers\RecordMapper;
+use LaraFenix007\Eagle\Mappers\RecordMapper;
 
 class AbstractApiTest extends TestCase
 {

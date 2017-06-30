@@ -1,11 +1,11 @@
 <?php
 
-namespace Siqwell\Eagle\Tests\Api;
+namespace LaraFenix007\Eagle\Tests\Api;
 
-use Siqwell\Eagle\Api\FilterApi;
-use Siqwell\Eagle\Methods;
-use Siqwell\Eagle\Models\FilterRecord;
-use Siqwell\Eagle\Models\Record;
+use LaraFenix007\Eagle\Api\FilterApi;
+use LaraFenix007\Eagle\Methods;
+use LaraFenix007\Eagle\Models\FilterRecord;
+use LaraFenix007\Eagle\Models\Record;
 
 class FilterApiTest extends TestCase
 {

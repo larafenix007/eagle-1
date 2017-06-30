@@ -1,6 +1,6 @@
 <?php
 
-namespace Siqwell\Eagle\Mappers;
+namespace LaraFenix007\Eagle\Mappers;
 
 class StatisticsMapper extends AbstractMapper
 {

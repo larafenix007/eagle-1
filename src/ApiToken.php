@@ -1,6 +1,6 @@
 <?php
 
-namespace Siqwell\Eagle;
+namespace LaraFenix007\Eagle;
 
 
 class ApiToken

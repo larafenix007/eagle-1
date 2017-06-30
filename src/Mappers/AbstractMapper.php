@@ -1,10 +1,10 @@
 <?php
 
-namespace Siqwell\Eagle\Mappers;
+namespace LaraFenix007\Eagle\Mappers;
 
 /**
  * Class Mapper
- * @package Siqwell\Eagle\Mappers
+ * @package LaraFenix007\Eagle\Mappers
  */
 abstract class AbstractMapper
 {

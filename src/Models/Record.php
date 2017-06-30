@@ -1,6 +1,6 @@
 <?php
 
-namespace Siqwell\Eagle\Models;
+namespace LaraFenix007\Eagle\Models;
 
 class Record extends AbstractRecord
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Siqwell\Eagle\Mappers;
+namespace LaraFenix007\Eagle\Mappers;
 
-use Siqwell\Eagle\Common\ObjectHydrator;
-use Siqwell\Eagle\Models\Translation;
+use LaraFenix007\Eagle\Common\ObjectHydrator;
+use LaraFenix007\Eagle\Models\Translation;
 
 class TranslationMapper extends AbstractMapper
 {

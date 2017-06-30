@@ -1,10 +1,10 @@
 <?php
 
-namespace Siqwell\Eagle\Tests\Api;
+namespace LaraFenix007\Eagle\Tests\Api;
 
-use Siqwell\Eagle\Api\TranslationApi;
-use Siqwell\Eagle\Methods;
-use Siqwell\Eagle\Models\Translation;
+use LaraFenix007\Eagle\Api\TranslationApi;
+use LaraFenix007\Eagle\Methods;
+use LaraFenix007\Eagle\Models\Translation;
 
 class TranslationApiTest extends TestCase
 {

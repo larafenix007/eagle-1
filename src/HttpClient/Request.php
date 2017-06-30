@@ -1,6 +1,6 @@
 <?php
 
-namespace Siqwell\Eagle\HttpClient;
+namespace LaraFenix007\Eagle\HttpClient;
 
 use Illuminate\Support\Str;
 

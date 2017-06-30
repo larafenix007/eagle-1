@@ -1,14 +1,14 @@
 <?php
 
-namespace Siqwell\Eagle\Common;
+namespace LaraFenix007\Eagle\Common;
 
-use Siqwell\Eagle\Models\AbstractModel;
+use LaraFenix007\Eagle\Models\AbstractModel;
 
 /**
  * Utilisation class to hydrate objects.
  *
  * Class ObjectHydrator
- * @package Siqwell\Eagle\Common
+ * @package LaraFenix007\Eagle\Common
  */
 class ObjectHydrator
 {

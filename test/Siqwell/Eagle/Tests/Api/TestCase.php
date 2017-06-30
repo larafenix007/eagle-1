@@ -1,15 +1,15 @@
 <?php
 
-namespace Siqwell\Eagle\Tests\Api;
+namespace LaraFenix007\Eagle\Tests\Api;
 
-use Siqwell\Eagle\ApiToken;
-use Siqwell\Eagle\Methods;
-use Siqwell\Eagle\Tests\HttpClient\HttpClient;
-use Siqwell\Eagle\HttpClient\Request;
+use LaraFenix007\Eagle\ApiToken;
+use LaraFenix007\Eagle\Methods;
+use LaraFenix007\Eagle\Tests\HttpClient\HttpClient;
+use LaraFenix007\Eagle\HttpClient\Request;
 
-class TestCase extends \Siqwell\Eagle\Tests\TestCase
+class TestCase extends \LaraFenix007\Eagle\Tests\TestCase
 {
-    /** @var  \Siqwell\Eagle\Tests\Api\Api */
+    /** @var  \LaraFenix007\Eagle\Tests\Api\Api */
     private $api;
 
     /**
@@ -26,7 +26,7 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
      * @param $path
      * @param  array   $parameters
      * @param  string  $method
-     * @return \Siqwell\Eagle\HttpClient\Request
+     * @return \LaraFenix007\Eagle\HttpClient\Request
      */
     protected function getRequest($path, $method = 'GET', array $parameters = []) : Request
     {
@@ -42,7 +42,7 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
     /**
      * @param string|\Closure $mapper
      *
-     * @return \Siqwell\Eagle\Tests\Api\Api
+     * @return \LaraFenix007\Eagle\Tests\Api\Api
      */
     public function setMapper($mapper)
     {
@@ -56,7 +56,7 @@ class TestCase extends \Siqwell\Eagle\Tests\TestCase
 
     public function setRealApiClient()
     {
-        $this->api->setClient(new \Siqwell\Eagle\HttpClient\HttpClient(new ApiToken()), new Methods());
+        $this->api->setClient(new \LaraFenix007\Eagle\HttpClient\HttpClient(new ApiToken()), new Methods());
     }
 
     public function getResponseDataFromFile($method, $parameters = [])

@@ -1,6 +1,6 @@
 <?php
 
-namespace Siqwell\Eagle\HttpClient;
+namespace LaraFenix007\Eagle\HttpClient;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
@@ -11,11 +11,11 @@ use Kevinrob\GuzzleCache\Strategy\GreedyCacheStrategy;
 use Phlib\Guzzle\ConvertCharset;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
-use Siqwell\Eagle\ApiToken;
+use LaraFenix007\Eagle\ApiToken;
 
 /**
  * Class HttpClient
- * @package Siqwell\Eagle
+ * @package LaraFenix007\Eagle
  */
 class HttpClient extends Client
 {
@@ -24,14 +24,14 @@ class HttpClient extends Client
      */
     protected $cstore = 'file';
     /**
-     * @var \Siqwell\Eagle\ApiToken
+     * @var \LaraFenix007\Eagle\ApiToken
      */
     protected $apiToken;
     
     /**
      * HttpClient constructor.
      *
-     * @param \Siqwell\Eagle\ApiToken $apiToken
+     * @param \LaraFenix007\Eagle\ApiToken $apiToken
      * @param array $config
      */
     public function __construct(ApiToken $apiToken, array $config = [])

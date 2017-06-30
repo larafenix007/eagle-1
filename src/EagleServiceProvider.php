@@ -1,9 +1,9 @@
 <?php
 
-namespace Siqwell\Eagle;
+namespace LaraFenix007\Eagle;
 
 use Illuminate\Support\ServiceProvider;
-use Siqwell\Eagle\Facades\Eagle;
+use LaraFenix007\Eagle\Facades\Eagle;
 
 class EagleServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class EagleServiceProvider extends ServiceProvider
         
 //        $this->loadRoutesFrom(__DIR__ . '/routes.php');
 //
-//        $this->app->make('Siqwell\Eagle\EagleController');
+//        $this->app->make('LaraFenix007\Eagle\EagleController');
     }
     
     /**

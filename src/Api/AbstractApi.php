@@ -1,17 +1,17 @@
 <?php
 
-namespace Siqwell\Eagle\Api;
+namespace LaraFenix007\Eagle\Api;
 
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Uri;
 use Illuminate\Support\Str;
-use Siqwell\Eagle\HttpClient\HttpClient;
-use Siqwell\Eagle\HttpClient\Request;
-use Siqwell\Eagle\Mappers\AbstractMapper;
+use LaraFenix007\Eagle\HttpClient\HttpClient;
+use LaraFenix007\Eagle\HttpClient\Request;
+use LaraFenix007\Eagle\Mappers\AbstractMapper;
 
 /**
  * Class ContractApi
- * @package Siqwell\Eagle\Api
+ * @package LaraFenix007\Eagle\Api
  */
 abstract class AbstractApi
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Siqwell\Eagle\Facades;
+namespace LaraFenix007\Eagle\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Eagle
- * @package Siqwell\Eagle\Facades
+ * @package LaraFenix007\Eagle\Facades
  *
- * @method static \Siqwell\Eagle\Api\AlbumApi Album()
- * @method static \Siqwell\Eagle\Api\FilterApi Filter()
- * @method static \Siqwell\Eagle\Api\RecordApi Record()
- * @method static \Siqwell\Eagle\Api\TranslationApi Translation()
+ * @method static \LaraFenix007\Eagle\Api\AlbumApi Album()
+ * @method static \LaraFenix007\Eagle\Api\FilterApi Filter()
+ * @method static \LaraFenix007\Eagle\Api\RecordApi Record()
+ * @method static \LaraFenix007\Eagle\Api\TranslationApi Translation()
  */
 class Eagle extends Facade
 {
@@ -22,6 +22,6 @@ class Eagle extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \Siqwell\Eagle\Client::class;
+        return \LaraFenix007\Eagle\Client::class;
     }
 }

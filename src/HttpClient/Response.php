@@ -1,10 +1,10 @@
 <?php
 
-namespace Siqwell\Eagle\HttpClient;
+namespace LaraFenix007\Eagle\HttpClient;
 
 /**
  * Class Response
- * @package Siqwell\Eagle\HttpClient
+ * @package LaraFenix007\Eagle\HttpClient
  */
 class Response
 {
