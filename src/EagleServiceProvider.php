@@ -3,7 +3,6 @@
 namespace LaraFenix007\Eagle;
 
 use Illuminate\Support\ServiceProvider;
-use LaraFenix007\Eagle\Facades\Eagle;
 
 class EagleServiceProvider extends ServiceProvider
 {
@@ -12,12 +11,8 @@ class EagleServiceProvider extends ServiceProvider
         $this->publishes([
             $this->defaultConfig() => config_path('eagle.php'),
         ]);
-        
-//        $this->loadRoutesFrom(__DIR__ . '/routes.php');
-//
-//        $this->app->make('LaraFenix007\Eagle\EagleController');
     }
-    
+
     /**
      * Register the service provider.
      *
@@ -26,17 +21,17 @@ class EagleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->setupConfiguration();
-        
-        $this->app->singleton(Eagle::class, function () {
-            $options = config('eagle.options');
-            
+
+        $this->app->singleton(Client::class, function () {
+            $options = config('eagle');
+
             // Register the client using the key and options from config
             $token = new ApiToken(config('eagle.api_key'));
-            
+
             return new Client($token, $options);
         });
     }
-    
+
     /**
      * Get the services provided by the provider.
      *
@@ -46,7 +41,7 @@ class EagleServiceProvider extends ServiceProvider
     {
         return ['eagle'];
     }
-    
+
     /**
      * Setup configuration
      *
@@ -57,7 +52,7 @@ class EagleServiceProvider extends ServiceProvider
         $config = $this->defaultConfig();
         $this->mergeConfigFrom($config, 'eagle');
     }
-    
+
     /**
      * Returns the default configuration path
      *
