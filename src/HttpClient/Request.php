@@ -1,9 +1,13 @@
 <?php
 
-namespace LaraFenix007\Eagle\HttpClient;
+namespace Siqwell\Eagle\HttpClient;
 
 use Illuminate\Support\Str;
 
+/**
+ * Class Request
+ * @package Siqwell\Eagle\HttpClient
+ */
 class Request
 {
     const METHODS = [
@@ -14,27 +18,29 @@ class Request
         'PATCH',
         'DELETE'
     ];
-    
+
     /**
      * @var string
      */
     private $path;
-    
+
     /**
      * @var string
      */
     private $method;
-    
+
     /**
      * @var array
      */
     private $parameters;
-    
+
     /**
      * Request constructor.
+     *
      * @param string $path
      * @param string $method
      * @param array  $parameters
+     *
      * @throws \InvalidArgumentException
      */
     public function __construct($method = 'GET', $path = '/', array $parameters = [])
@@ -42,11 +48,11 @@ class Request
         if (!in_array($method, self::METHODS)) {
             throw new \InvalidArgumentException("Unsupproted method '$method'");
         }
-        
-        $this->path = $path;
-        $this->method = $method;
+
+        $this->path       = $path;
+        $this->method     = $method;
         $this->parameters = $parameters;
-        
+
         $this->replaceVariables();
     }
 
@@ -56,10 +62,9 @@ class Request
     public function replaceVariables()
     {
         $queryAr = [];
-        $path = $this->getPath();
+        $path    = $this->getPath();
 
-        foreach ($this->parameters as $key => $value)
-        {
+        foreach ($this->parameters as $key => $value) {
             if (strpos($path, '{' . $key . '}') !== false) {
                 $path = Str::replaceFirst('{' . $key . '}', $value, $path);
                 unset($this->parameters[$key]);
@@ -74,7 +79,7 @@ class Request
 
         $this->setPath($path);
     }
-    
+
     /**
      * @return string
      */
@@ -82,7 +87,7 @@ class Request
     {
         return $this->path;
     }
-    
+
     /**
      * @param string $path
      */
@@ -90,7 +95,7 @@ class Request
     {
         $this->path = $path;
     }
-    
+
     /**
      * @return string
      */
@@ -98,7 +103,7 @@ class Request
     {
         return $this->method;
     }
-    
+
     /**
      * @param string $method
      */
@@ -106,7 +111,7 @@ class Request
     {
         $this->method = $method;
     }
-    
+
     /**
      * @return array
      */
@@ -114,7 +119,7 @@ class Request
     {
         return $this->parameters;
     }
-    
+
     /**
      * @param array $parameters
      */

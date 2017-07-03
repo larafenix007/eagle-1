@@ -1,7 +1,11 @@
 <?php
 
-namespace LaraFenix007\Eagle;
+namespace Siqwell\Eagle;
 
+/**
+ * Class Methods
+ * @package Siqwell\Eagle
+ */
 class Methods
 {
     const TRANSLATIONS_GET_LIST = ['method' => 'GET', 'path' => '/streaming/translations.json'];
@@ -9,7 +13,7 @@ class Methods
     const TRANSLATION_DELETE = ['method' => 'DELETE', 'path' => '/streaming/translations/{id}.json'];
     const TRANSLATION_UPDATE = ['method' => 'PUT', 'path' => '/streaming/translations/{id}.json'];
     const TRANSLATION_GET_STATISTICS = ['method' => 'GET', 'path' => '/streaming/translations/{id}/statistics.json'];
-    
+
     const RECORDS_GET_STATISTICS = ['method' => 'GET', 'path' => '/media/records/statistics.json'];
     const RECORD_GET_STATISTICS = ['method' => 'GET', 'path' => '/media/records/{id}/statistics.json'];
     

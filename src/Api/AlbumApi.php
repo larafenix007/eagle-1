@@ -1,11 +1,15 @@
 <?php
 
-namespace LaraFenix007\Eagle\Api;
+namespace Siqwell\Eagle\Api;
 
-use LaraFenix007\Eagle\HttpClient\Request;
-use LaraFenix007\Eagle\Mappers\AlbumsMapper;
-use LaraFenix007\Eagle\Methods;
+use Siqwell\Eagle\HttpClient\Request;
+use Siqwell\Eagle\Mappers\AlbumsMapper;
+use Siqwell\Eagle\Methods;
 
+/**
+ * Class AlbumApi
+ * @package Siqwell\Eagle\Api
+ */
 class AlbumApi extends AbstractApi
 {
     /**

@@ -1,31 +1,31 @@
 <?php
 
-namespace LaraFenix007\Eagle;
+namespace Siqwell\Eagle;
 
-use LaraFenix007\Eagle\Api\AlbumApi;
-use LaraFenix007\Eagle\Api\RecordApi;
-use LaraFenix007\Eagle\Api\TranslationApi;
-use LaraFenix007\Eagle\HttpClient\HttpClient;
-use LaraFenix007\Eagle\Api\FilterApi;
+use Siqwell\Eagle\Api\AlbumApi;
+use Siqwell\Eagle\Api\RecordApi;
+use Siqwell\Eagle\Api\TranslationApi;
+use Siqwell\Eagle\HttpClient\HttpClient;
+use Siqwell\Eagle\Api\FilterApi;
 
 /**
  * Class Client
- * @package LaraFenix007\Eagle
+ * @package Siqwell\Eagle
  */
 class Client
 {
     /**
-     * @var \LaraFenix007\Eagle\HttpClient\HttpClient
+     * @var \Siqwell\Eagle\HttpClient\HttpClient
      */
     protected $client;
     /**
-     * @var \LaraFenix007\Eagle\ApiToken
+     * @var \Siqwell\Eagle\ApiToken
      */
     protected $apiToken;
 
     /**
      * Client constructor.
-     * @param \LaraFenix007\Eagle\ApiToken $apiToken
+     * @param \Siqwell\Eagle\ApiToken $apiToken
      * @param array                   $options
      */
     public function __construct(ApiToken $apiToken, array $options = [])

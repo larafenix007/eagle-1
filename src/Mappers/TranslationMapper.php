@@ -1,16 +1,23 @@
 <?php
 
-namespace LaraFenix007\Eagle\Mappers;
+namespace Siqwell\Eagle\Mappers;
 
-use LaraFenix007\Eagle\Common\ObjectHydrator;
-use LaraFenix007\Eagle\Models\Translation;
+use Siqwell\Eagle\Common\ObjectHydrator;
+use Siqwell\Eagle\Models\Translation;
 
+/**
+ * Class TranslationMapper
+ * @package Siqwell\Eagle\Mappers
+ */
 class TranslationMapper extends AbstractMapper
 {
+    /**
+     * @return \Siqwell\Eagle\Models\AbstractModel
+     */
     public function get()
     {
         $objectHydrator = new ObjectHydrator();
-        
+
         return $objectHydrator->hydrate(new Translation(), $this->response['translation']);
     }
 }

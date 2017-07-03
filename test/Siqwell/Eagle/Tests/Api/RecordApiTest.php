@@ -1,10 +1,10 @@
 <?php
 
-namespace LaraFenix007\Eagle\Tests\Api;
+namespace Siqwell\Eagle\Tests\Api;
 
-use LaraFenix007\Eagle\Api\RecordApi;
-use LaraFenix007\Eagle\Methods;
-use LaraFenix007\Eagle\Models\Record;
+use Siqwell\Eagle\Api\RecordApi;
+use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Models\Record;
 
 class RecordApiTest extends TestCase
 {

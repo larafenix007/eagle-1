@@ -13,7 +13,7 @@ if ((!$loader = includeIfExists(__DIR__.'/../vendor/autoload.php')) && (!$loader
         'php composer.phar install'.PHP_EOL);
 }
 
-$loader->add('LaraFenix007\Eagle\Tests', __DIR__);
+$loader->add('Siqwell\Eagle\Tests', __DIR__);
 
 
 return $loader;

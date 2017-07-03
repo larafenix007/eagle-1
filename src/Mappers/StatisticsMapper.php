@@ -1,7 +1,11 @@
 <?php
 
-namespace LaraFenix007\Eagle\Mappers;
+namespace Siqwell\Eagle\Mappers;
 
+/**
+ * Class StatisticsMapper
+ * @package Siqwell\Eagle\Mappers
+ */
 class StatisticsMapper extends AbstractMapper
 {
     public function get()

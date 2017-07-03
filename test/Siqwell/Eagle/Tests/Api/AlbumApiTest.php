@@ -1,10 +1,10 @@
 <?php
 
-namespace LaraFenix007\Eagle\Tests\Api;
+namespace Siqwell\Eagle\Tests\Api;
 
-use LaraFenix007\Eagle\Api\AlbumApi;
-use LaraFenix007\Eagle\Methods;
-use LaraFenix007\Eagle\Models\Album;
+use Siqwell\Eagle\Api\AlbumApi;
+use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Models\Album;
 
 class AlbumApiTest extends TestCase
 {

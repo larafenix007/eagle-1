@@ -1,9 +1,13 @@
 <?php
 
-namespace LaraFenix007\Eagle;
+namespace Siqwell\Eagle;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class EagleServiceProvider
+ * @package Siqwell\Eagle
+ */
 class EagleServiceProvider extends ServiceProvider
 {
     public function boot()

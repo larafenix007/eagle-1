@@ -1,9 +1,9 @@
 <?php
 
-namespace LaraFenix007\Eagle\Tests\Api;
+namespace Siqwell\Eagle\Tests\Api;
 
-use LaraFenix007\Eagle\Api\AbstractApi;
-use LaraFenix007\Eagle\HttpClient\Request;
+use Siqwell\Eagle\Api\AbstractApi;
+use Siqwell\Eagle\HttpClient\Request;
 
 class Api extends AbstractApi
 {

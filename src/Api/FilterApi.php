@@ -1,11 +1,15 @@
 <?php
 
-namespace LaraFenix007\Eagle\Api;
+namespace Siqwell\Eagle\Api;
 
-use LaraFenix007\Eagle\HttpClient\Request;
-use LaraFenix007\Eagle\Mappers\FilterMapper;
-use LaraFenix007\Eagle\Methods;
+use Siqwell\Eagle\HttpClient\Request;
+use Siqwell\Eagle\Mappers\FilterMapper;
+use Siqwell\Eagle\Methods;
 
+/**
+ * Class FilterApi
+ * @package Siqwell\Eagle\Api
+ */
 class FilterApi extends AbstractApi
 {
     /**

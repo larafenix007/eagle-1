@@ -1,14 +1,20 @@
 <?php
 
-namespace LaraFenix007\Eagle\Models;
+namespace Siqwell\Eagle\Models;
 
+/**
+ * Class AbstractRecord
+ * @package Siqwell\Eagle\Models
+ */
 abstract class AbstractRecord extends AbstractModel
 {
     public $id;
     public $name;
     public $description;
+
     /** @var  array */
     public $tags;
+
     /** @var  int */
     public $duration;
     public $origin;

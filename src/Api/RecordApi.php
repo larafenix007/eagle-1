@@ -1,20 +1,24 @@
 <?php
 
-namespace LaraFenix007\Eagle\Api;
+namespace Siqwell\Eagle\Api;
 
-use LaraFenix007\Eagle\HttpClient\Request;
-use LaraFenix007\Eagle\Mappers\RecordMapper;
-use LaraFenix007\Eagle\Mappers\SimpleMapper;
-use LaraFenix007\Eagle\Mappers\StatisticsMapper;
-use LaraFenix007\Eagle\Methods;
-use LaraFenix007\Eagle\Models\Record;
+use Siqwell\Eagle\HttpClient\Request;
+use Siqwell\Eagle\Mappers\RecordMapper;
+use Siqwell\Eagle\Mappers\SimpleMapper;
+use Siqwell\Eagle\Mappers\StatisticsMapper;
+use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Models\Record;
 
+/**
+ * Class RecordApi
+ * @package Siqwell\Eagle\Api
+ */
 class RecordApi extends AbstractApi
 {
     /**
      * @param $id
      * @throws \Exception
-     * @return \LaraFenix007\Eagle\Models\Record
+     * @return \Siqwell\Eagle\Models\Record
      * ID – идентификатор записи
      */
     public function find($id) : ?Record

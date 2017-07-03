@@ -1,12 +1,12 @@
 <?php
 
-namespace LaraFenix007\Eagle\Tests\HttpClient;
+namespace Siqwell\Eagle\Tests\HttpClient;
 
 use GuzzleHttp\Psr7\Response;
 use Kevinrob\GuzzleCache\CacheMiddleware;
 use GuzzleHttp\Exception\ConnectException;
 
-class HttpClient extends \LaraFenix007\Eagle\HttpClient\HttpClient
+class HttpClient extends \Siqwell\Eagle\HttpClient\HttpClient
 {
     public function cacheMiddleware($ttl = 86400): CacheMiddleware
     {

@@ -1,7 +1,11 @@
 <?php
 
-namespace LaraFenix007\Eagle\Models;
+namespace Siqwell\Eagle\Models;
 
+/**
+ * Class Translation
+ * @package Siqwell\Eagle\Models
+ */
 class Translation extends AbstractModel
 {
     public $id;

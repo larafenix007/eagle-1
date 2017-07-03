@@ -1,15 +1,15 @@
 <?php
 
-namespace LaraFenix007\Eagle\Mappers;
+namespace Siqwell\Eagle\Mappers;
 
-use LaraFenix007\Eagle\Common\ObjectHydrator;
-use LaraFenix007\Eagle\Models\Filter;
-use LaraFenix007\Eagle\Models\FilterRecord;
-use LaraFenix007\Eagle\Models\Record;
+use Siqwell\Eagle\Common\ObjectHydrator;
+use Siqwell\Eagle\Models\Filter;
+use Siqwell\Eagle\Models\FilterRecord;
+use Siqwell\Eagle\Models\Record;
 
 /**
  * Class Mapper
- * @package LaraFenix007\Eagle\Mappers
+ * @package Siqwell\Eagle\Mappers
  */
 class FilterMapper extends AbstractMapper
 {

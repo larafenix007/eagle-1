@@ -1,9 +1,10 @@
 <?php
+
 return [
-    /*
+    /**
      * Api key
      */
-    'api_key' => '--SD8N3jx7LZi-rYz5Wz',
+    'api_key' => env('EAGLE_API_KEY'),
     
     'base_uri' => 'http://api.eagleplatform.com',
 

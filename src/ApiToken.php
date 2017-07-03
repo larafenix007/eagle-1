@@ -1,8 +1,11 @@
 <?php
 
-namespace LaraFenix007\Eagle;
+namespace Siqwell\Eagle;
 
-
+/**
+ * Class ApiToken
+ * @package Siqwell\Eagle
+ */
 class ApiToken
 {
     private $apiToken = null;
@@ -38,7 +41,10 @@ class ApiToken
     {
         return $this->apiToken;
     }
-    
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string)$this->apiToken;

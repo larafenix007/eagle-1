@@ -1,14 +1,14 @@
 <?php
 
-namespace LaraFenix007\Eagle\Common;
+namespace Siqwell\Eagle\Common;
 
-use LaraFenix007\Eagle\Models\AbstractModel;
+use Siqwell\Eagle\Models\AbstractModel;
 
 /**
  * Utilisation class to hydrate objects.
  *
  * Class ObjectHydrator
- * @package LaraFenix007\Eagle\Common
+ * @package Siqwell\Eagle\Common
  */
 class ObjectHydrator
 {
@@ -24,9 +24,7 @@ class ObjectHydrator
     {
         if (!empty($data)) {
             foreach ($data as $k => $v) {
-
                 if (in_array($k, $object::$properties)) {
-
                     $object->$k = $v;
                 }
             }

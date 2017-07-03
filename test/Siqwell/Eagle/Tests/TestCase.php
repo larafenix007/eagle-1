@@ -1,10 +1,10 @@
 <?php
 
-namespace LaraFenix007\Eagle\Tests;
+namespace Siqwell\Eagle\Tests;
 
 use Orchestra\Database\ConsoleServiceProvider;
-use LaraFenix007\Eagle\ApiToken;
-use LaraFenix007\Eagle\Tests\HttpClient\HttpClient;
+use Siqwell\Eagle\ApiToken;
+use Siqwell\Eagle\Tests\HttpClient\HttpClient;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -20,9 +20,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
         return new HttpClient($this->createApiToken(), $this->createFakeConfig());
     }
 
-    public function createRealHttpClient() : \LaraFenix007\Eagle\HttpClient\HttpClient
+    public function createRealHttpClient() : \Siqwell\Eagle\HttpClient\HttpClient
     {
-        return new \LaraFenix007\Eagle\HttpClient\HttpClient($this->createApiToken(true), $this->createRealConfig());
+        return new \Siqwell\Eagle\HttpClient\HttpClient($this->createApiToken(true), $this->createRealConfig());
     }
 
     protected function createApiToken($isReal = false) : ApiToken

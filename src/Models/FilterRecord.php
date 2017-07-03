@@ -1,7 +1,11 @@
 <?php
 
-namespace LaraFenix007\Eagle\Models;
+namespace Siqwell\Eagle\Models;
 
+/**
+ * Class FilterRecord
+ * @package Siqwell\Eagle\Models
+ */
 class FilterRecord extends AbstractRecord
 {
     public $current_screenshot;

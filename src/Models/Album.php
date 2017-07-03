@@ -1,7 +1,11 @@
 <?php
 
-namespace LaraFenix007\Eagle\Models;
+namespace Siqwell\Eagle\Models;
 
+/**
+ * Class Album
+ * @package Siqwell\Eagle\Models
+ */
 class Album extends AbstractModel
 {
     public $id;

@@ -1,6 +1,6 @@
 <?php
 
-namespace LaraFenix007\Eagle\HttpClient;
+namespace Siqwell\Eagle\HttpClient;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
@@ -11,11 +11,11 @@ use Kevinrob\GuzzleCache\Strategy\GreedyCacheStrategy;
 use Phlib\Guzzle\ConvertCharset;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
-use LaraFenix007\Eagle\ApiToken;
+use Siqwell\Eagle\ApiToken;
 
 /**
  * Class HttpClient
- * @package LaraFenix007\Eagle
+ * @package Siqwell\Eagle
  */
 class HttpClient extends Client
 {
@@ -23,35 +23,37 @@ class HttpClient extends Client
      * @var string
      */
     protected $cstore = 'file';
+
     /**
-     * @var \LaraFenix007\Eagle\ApiToken
+     * @var \Siqwell\Eagle\ApiToken
      */
     protected $apiToken;
-    
+
     /**
      * HttpClient constructor.
      *
-     * @param \LaraFenix007\Eagle\ApiToken $apiToken
-     * @param array $config
+     * @param \Siqwell\Eagle\ApiToken $apiToken
+     * @param array                   $config
      */
     public function __construct(ApiToken $apiToken, array $config = [])
     {
         $this->apiToken = $apiToken;
-        $stack = HandlerStack::create();
-        
+        $stack          = HandlerStack::create();
+
         $stack->push($this->cacheMiddleware(), 'cache');
         $stack->push($this->charsetMiddleware(), 'charset');
-        
+
         $config = array_merge([
             'handler' => $stack,
         ], $config);
-        
+
         parent::__construct($config);
     }
 
     /**
      * @param UriInterface|string $uri
-     * @param array $options
+     * @param array               $options
+     *
      * @return ResponseInterface
      */
     public function get($uri, array $options = [])
@@ -61,7 +63,7 @@ class HttpClient extends Client
         return parent::get($uri, $options);
     }
 
-    private function injectAuthInfoToUri(string $uri) : string
+    private function injectAuthInfoToUri(string $uri): string
     {
         if (is_string($uri)) {
             $query = parse_url($uri, PHP_URL_QUERY);
@@ -76,7 +78,7 @@ class HttpClient extends Client
 
         return $uri;
     }
-    
+
     /**
      * @param int $ttl
      *
@@ -85,10 +87,10 @@ class HttpClient extends Client
     protected function cacheMiddleware($ttl = 86400): CacheMiddleware
     {
         $store = new LaravelCacheStorage(Cache::store($this->cstore));
-        
+
         return new CacheMiddleware(new GreedyCacheStrategy($store, $ttl));
     }
-    
+
     /**
      * @return ConvertCharset
      */

@@ -1,13 +1,17 @@
 <?php
 
-namespace LaraFenix007\Eagle\Api;
+namespace Siqwell\Eagle\Api;
 
-use LaraFenix007\Eagle\HttpClient\Request;
-use LaraFenix007\Eagle\Mappers\TranslationMapper;
-use LaraFenix007\Eagle\Mappers\TranslationsMapper;
-use LaraFenix007\Eagle\Methods;
-use LaraFenix007\Eagle\Models\Translation;
+use Siqwell\Eagle\HttpClient\Request;
+use Siqwell\Eagle\Mappers\TranslationMapper;
+use Siqwell\Eagle\Mappers\TranslationsMapper;
+use Siqwell\Eagle\Methods;
+use Siqwell\Eagle\Models\Translation;
 
+/**
+ * Class TranslationApi
+ * @package Siqwell\Eagle\Api
+ */
 class TranslationApi extends AbstractApi
 {
     /**
@@ -34,7 +38,7 @@ class TranslationApi extends AbstractApi
      * @param $id
      * @throws \Exception
      *
-     * @return \LaraFenix007\Eagle\Models\Translation
+     * @return \Siqwell\Eagle\Models\Translation
      */
     public function find($id) : ?Translation
     {

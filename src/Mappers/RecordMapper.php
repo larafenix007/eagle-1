@@ -1,13 +1,13 @@
 <?php
 
-namespace LaraFenix007\Eagle\Mappers;
+namespace Siqwell\Eagle\Mappers;
 
-use LaraFenix007\Eagle\Common\ObjectHydrator;
-use LaraFenix007\Eagle\Models\Record;
+use Siqwell\Eagle\Common\ObjectHydrator;
+use Siqwell\Eagle\Models\Record;
 
 /**
  * Class Mapper
- * @package LaraFenix007\Eagle\Mappers
+ * @package Siqwell\Eagle\Mappers
  */
 class RecordMapper extends AbstractMapper
 {

@@ -1,9 +1,9 @@
 <?php
-namespace LaraFenix007\Eagle\Models;
+namespace Siqwell\Eagle\Models;
 
 /**
  * Class AbstractModel
- * @package LaraFenix007\Eagle\Model
+ * @package Siqwell\Eagle\Model
  */
 abstract class AbstractModel
 {

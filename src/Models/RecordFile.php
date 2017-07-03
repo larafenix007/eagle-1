@@ -1,7 +1,11 @@
 <?php
 
-namespace LaraFenix007\Eagle\Models;
+namespace Siqwell\Eagle\Models;
 
+/**
+ * Class RecordFile
+ * @package Siqwell\Eagle\Models
+ */
 class RecordFile extends AbstractModel
 {
     public $url;

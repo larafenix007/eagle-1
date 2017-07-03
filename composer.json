@@ -1,5 +1,5 @@
 {
-    "name": "larafenix007/eagle",
+    "name": "siqwell/eagle",
     "description": "Laravel wrapper for Eagleplatform API",
     "keywords": ["laravel", "eagleplatform", "api"],
     "license": "proprietary",
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LaraFenix007\\Eagle\\": "src/"
+            "Siqwell\\Eagle\\": "src/"
         }
     },
     "require-dev": {

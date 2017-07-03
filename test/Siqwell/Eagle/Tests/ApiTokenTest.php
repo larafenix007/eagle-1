@@ -1,5 +1,5 @@
 <?php
-namespace LaraFenix007\Eagle\Tests;
+namespace Siqwell\Eagle\Tests;
 
 class ApiTokenTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,7 @@ class ApiTokenTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetGet()
     {
-        $token  = new \LaraFenix007\Eagle\ApiToken();
+        $token  = new \Siqwell\Eagle\ApiToken();
         $token->setToken(self::API_TOKEN);
 
         $this->assertEquals(self::API_TOKEN, $token->getToken());
@@ -23,7 +23,7 @@ class ApiTokenTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowsErrorOnEmptyApiToken()
     {
-        $token  = new \LaraFenix007\Eagle\ApiToken();
+        $token  = new \Siqwell\Eagle\ApiToken();
         $token->setToken(null);
     }
 }
